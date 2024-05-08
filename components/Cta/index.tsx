@@ -1,6 +1,15 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const CountdownTimer = dynamic(() => import("../Utils/Timer"), {
+	ssr: false,
+});
 
 export const Cta = () => {
+	let targetDate = "05/03/2024";
+	let targetDate2 = "05/10/2024";
+	let targetDate3 = "05/18/2024";
+
 	return (
 		<section
 			className="relative mx-auto bg-cover bg-center flex justify-center pt-6"
@@ -19,8 +28,8 @@ export const Cta = () => {
 							}}
 						>
 							<div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
-							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
-								<h3 className="text-center">
+							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex flex-col justify-between items-center">
+								<h3 className="text-center mt-10">
 									<a
 										className="text-white text-2xl font-bold text-center"
 										href="#"
@@ -29,6 +38,9 @@ export const Cta = () => {
 										Campeonato de España Sénior 2024
 									</a>
 								</h3>
+								<div className="text-center mb-10">
+									<CountdownTimer targetDate={targetDate}></CountdownTimer>
+								</div>
 							</div>
 						</article>
 						<article
@@ -38,8 +50,8 @@ export const Cta = () => {
 							}}
 						>
 							<div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
-							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
-								<h3 className="text-center">
+							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex flex-col justify-between items-center">
+								<h3 className="text-center mt-10">
 									<a
 										className="text-white text-2xl font-bold text-center"
 										href="#"
@@ -48,6 +60,9 @@ export const Cta = () => {
 										Andalucía Autonómico Benalmádena sub-15 y sub-19
 									</a>
 								</h3>
+								<div className="text-center mb-10">
+									<CountdownTimer targetDate={targetDate2}></CountdownTimer>
+								</div>
 							</div>
 						</article>
 						<article
@@ -57,8 +72,8 @@ export const Cta = () => {
 							}}
 						>
 							<div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
-							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
-								<h3 className="text-center">
+							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex flex-col justify-between items-center">
+								<h3 className="text-center mt-10">
 									<a
 										className="text-white text-2xl font-bold text-center"
 										href="#"
@@ -67,14 +82,19 @@ export const Cta = () => {
 										Andalucía Top TTR Humilladero sub-15 y sub-19
 									</a>
 								</h3>
+								<div className="text-center mb-10">
+									<CountdownTimer targetDate={targetDate3}></CountdownTimer>
+								</div>
 							</div>
 						</article>
 					</section>
 				</div>
 				<div className="flex justify-center items-center">
-					<button className="mb-6 px-8 items-center rounded-full bg-white py-3 text-center text-base text-black hover:scale-105 hover:opacity-80 transition duration-200">
-						Ver todos
-					</button>
+					<Link href="/competicion">
+						<button className="mb-6 px-8 items-center rounded-full bg-white py-3 text-center text-base text-black hover:scale-105 hover:opacity-80 transition duration-200">
+							Ver todos
+						</button>
+					</Link>
 				</div>
 			</div>
 		</section>

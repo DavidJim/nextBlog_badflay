@@ -10,6 +10,7 @@ const nextConfig = {
 				pathname: "/**",
 			},
 		],
+		domains: ["badflay-blog.local"],
 	},
 };
 

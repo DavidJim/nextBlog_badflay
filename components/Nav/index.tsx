@@ -28,49 +28,53 @@ export const Nav = () => {
 			<div className="hidden md:block py-4 px-4">
 				<div className="navbar relative w-full mx-auto md:bg-white rounded md:rounded-full">
 					<div className="hidden md:block absolute left-4 top-4 lg:left-8 md:top-7 md:text-xl">
-						<button
-							type="button"
-							className={`relative flex items-center justify-center border-2 border-x-2 text-purple-900 border-purple-900 rounded-full hover:bg-purple-900  hover:text-white transition-all duration-300 ${
-								hoveredHome ? "lg:w-28" : "w-12"
-							}`}
-							onMouseEnter={() => setHoveredHome(true)}
-							onMouseLeave={() => setHoveredHome(false)}
-						>
-							<FaHome className="m-3" />
-							{hoveredHome && (
-								<span className="hidden lg:block mr-2">Inicio</span>
-							)}
-						</button>
+						<Link href="/">
+							<button
+								type="button"
+								className={`relative flex items-center justify-center border-2 border-x-2 text-purple-900 border-purple-900 rounded-full hover:bg-purple-900  hover:text-white transition-all duration-300 ${
+									hoveredHome ? "lg:w-28" : "w-12"
+								}`}
+								onMouseEnter={() => setHoveredHome(true)}
+								onMouseLeave={() => setHoveredHome(false)}
+							>
+								<FaHome className="m-3" />
+								{hoveredHome && (
+									<span className="hidden lg:block mr-2">Inicio</span>
+								)}
+							</button>
+						</Link>
 					</div>
 					<div className="flex items-center justify-center p-4 text-base lg:text-xl">
 						<div className="flex items-center">
 							<Link
-								href="/"
+								href="/club"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
 							>
 								El Club
 							</Link>
 							<Link
-								href="#news"
+								href="/noticias"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
 							>
 								Noticias
 							</Link>
-							<Image
-								src="/images/logo.png"
-								alt="Picture of the author"
-								height={180}
-								width={180}
-								className="transition-all duration-200 ease-linear hover:-translate-y-[3px]"
-							></Image>
+							<Link href="/">
+								<Image
+									src="/images/logo.png"
+									alt="Picture of the author"
+									height={180}
+									width={180}
+									className="transition-all duration-200 ease-linear hover:-translate-y-[3px] hover:cursor-pointer"
+								></Image>
+							</Link>
 							<Link
-								href="#club"
+								href="/competicion"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
 							>
 								Competición
 							</Link>
 							<Link
-								href="#"
+								href="/contacto"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
 							>
 								Contacto
@@ -172,24 +176,26 @@ export const Nav = () => {
 					}`}
 				>
 					<div
-						className={`flex flex-col relative bg-white items-center py-2 text-xl top-0 h-auto z-50 w-full ml-0 overflow-y-auto`}
+						className={`flex flex-col relative bg-white items-center py-2 text-xl top-0 h-auto z-50 w-full ml-0 overflow-y-auto ${
+							!opened && "hidden"
+						}`}
 					>
-						<Link href="/" className="py-4">
+						<Link href="/" className="py-4" onClick={toggleOpened}>
 							Inicio
 						</Link>
-						<Link href="#" className="py-4">
+						<Link href="/club" className="py-4" onClick={toggleOpened}>
 							El Club
 						</Link>
-						<Link href="#" className="py-4">
+						<Link href="/competicion" className="py-4" onClick={toggleOpened}>
 							Competición
 						</Link>
-						<Link href="#" className="py-4">
+						<Link href="/noticias" className="py-4" onClick={toggleOpened}>
 							Noticias
 						</Link>
-						<Link href="#" className="py-4">
+						<Link href="/contacto" className="py-4" onClick={toggleOpened}>
 							Contacto
 						</Link>
-						<div className="py-4 text-xl">
+						<div className="py-4 text-xl" onClick={toggleOpened}>
 							<button
 								type="button"
 								className="relative flex items-center justify-center border-2 border-x-2 text-purple-900 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white w-32"

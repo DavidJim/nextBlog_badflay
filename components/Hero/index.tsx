@@ -23,7 +23,7 @@ export const Hero = () => {
 						</h1>
 					</div>
 					<div className="hidden md:flex justify-center md:ml-16 md:justify-start">
-						<button className="mr-3 inline-flex items-center justify-center rounded-full bg-purple-800 px-5 py-3 text-center text-base font-medium text-white hover:bg-purple-700 focus:bg-purple-700 focus:ring-4 dark:focus:ring-primary-900">
+						<button className="mr-3 inline-flex items-center justify-center rounded-full bg-purple-800 px-5 py-3 text-center text-base font-medium text-white hover:bg-purple-700 focus:bg-purple-700 focus:ring-4 dark:focus:ring-primary-900 z-50">
 							Únete
 							<svg
 								className="-mr-1 ml-2 h-5 w-5"
@@ -38,7 +38,7 @@ export const Hero = () => {
 								></path>
 							</svg>
 						</button>
-						<button className="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+						<button className="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800 z-50">
 							{" "}
 							Speak to Sales{" "}
 						</button>
