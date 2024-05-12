@@ -1,6 +1,7 @@
 import { About } from "@/components/About";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { getNews, getPostBySlug } from "@/lib/service";
+import { styles } from "../../components/Utils/styles_innerHtml";
 
 export default function post({ post }: { post: any }) {
 	return (
@@ -20,107 +21,28 @@ export default function post({ post }: { post: any }) {
 						<h1 className="text-gray-900 font-bold text-3xl mb-2">
 							{post.title}
 						</h1>
-						<p className="text-gray-700 text-xs mt-2">
-							Written By:
-							<a
-								href="#"
-								className="text-indigo-600 font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-							>
-								Ahmad Sultani
-							</a>{" "}
-							In
-							<a
-								href="#"
-								className="text-xs text-indigo-600 font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-							>
-								Election
-							</a>
-							,
-							<a
-								href="#"
-								className="text-xs text-indigo-600 font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-							>
-								Politics
-							</a>
+						<p className="text-gray-700 text-xs mb-0">Autor:</p>
+						<p className="text-purple-900 text-sm font-medium m-0 p-0 hover:text-gray-900 transition duration-500 ease-in-out">
+							{post.author.node.name}
 						</p>
-						<p className="text-base leading-8 my-5">
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry. Lorem Ipsum has been the industry standard dummy text
-							ever since the 1500s, when an unknown printer took a galley of
-							type and scrambled it to make a type specimen book. It has
-							survived not only five centuries, but also the leap into
-							electronic typesetting, remaining essentially unchanged. It was
-							popularised in the 1960s with the release of Letraset sheets
-							containing Lorem Ipsum passages, and more recently with desktop
-							publishing software like Aldus PageMaker including versions of
-							Lorem Ipsum.
-						</p>
-						<h3 className="text-2xl font-bold my-5">
-							#1. What is Lorem Ipsum?
-						</h3>
-						<p className="text-base leading-8 my-5">
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry. Lorem Ipsum has been the industry standard dummy text
-							ever since the 1500s, when an unknown printer took a galley of
-							type and scrambled it to make a type specimen book. It has
-							survived not only five centuries, but also the leap into
-							electronic typesetting, remaining essentially unchanged. It was
-							popularised in the 1960s with the release of Letraset sheets
-							containing Lorem Ipsum passages, and more recently with desktop
-							publishing software like Aldus PageMaker including versions of
-							Lorem Ipsum.
-						</p>
-						<blockquote className="border-l-4 text-base italic leading-8 my-5 p-5 text-indigo-600">
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry. Lorem Ipsum has been the industry standard dummy text
-							ever since the 1500s
-						</blockquote>
-						<p className="text-base leading-8 my-5">
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry. Lorem Ipsum has been the industry standard dummy text
-							ever since the 1500s, when an unknown printer took a galley of
-							type and scrambled it to make a type specimen book. It has
-							survived not only five centuries, but also the leap into
-							electronic typesetting, remaining essentially unchanged. It was
-							popularised in the 1960s with the release of Letraset sheets
-							containing Lorem Ipsum passages, and more recently with desktop
-							publishing software like Aldus PageMaker including versions of
-							Lorem Ipsum.
-						</p>
-						<a
-							href="#"
-							className="text-xs text-indigo-600 font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-						>
-							#Election
-						</a>
-						,
-						<a
-							href="#"
-							className="text-xs text-indigo-600 font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-						>
-							#people
-						</a>
-						,
-						<a
-							href="#"
-							className="text-xs text-indigo-600 font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-						>
-							#Election2020
-						</a>
-						,
-						<a
-							href="#"
-							className="text-xs text-indigo-600 font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-						>
-							#trump
-						</a>
-						,
-						<a
-							href="#"
-							className="text-xs text-indigo-600 font-medium hover:text-gray-900 transition duration-500 ease-in-out"
-						>
-							#Joe
-						</a>
+						<div className="flex flex-row justify-center items-center space-x-2 pt-2">
+							{post.categories.nodes.map((category: any) => {
+								return (
+									<p
+										key={category}
+										className="bg-purple-800 items-center text-[0.5rem]/[0.5rem] text-gray-50 pt-1.5 pr-3 pb-1.5 pl-3 mb-2 md:mb-0 rounded-full uppercase"
+									>
+										{category.name}
+									</p>
+								);
+							})}
+						</div>
+						<div
+							className="text-base text-justify leading-8 my-5 py-5"
+							dangerouslySetInnerHTML={{
+								__html: styles.paragraphNew + post.content,
+							}}
+						></div>
 					</div>
 				</div>
 			</div>

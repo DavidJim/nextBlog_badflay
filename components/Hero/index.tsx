@@ -23,25 +23,23 @@ export const Hero = () => {
 						</h1>
 					</div>
 					<div className="hidden md:flex justify-center md:ml-16 md:justify-start">
-						<button className="mr-3 inline-flex items-center justify-center rounded-full bg-purple-800 px-5 py-3 text-center text-base font-medium text-white hover:bg-purple-700 focus:bg-purple-700 focus:ring-4 dark:focus:ring-primary-900 z-50">
-							Únete
-							<svg
-								className="-mr-1 ml-2 h-5 w-5"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									fill-rule="evenodd"
-									d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-									clip-rule="evenodd"
-								></path>
-							</svg>
-						</button>
-						<button className="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800 z-50">
-							{" "}
-							Speak to Sales{" "}
-						</button>
+						<Link href="/contacto" className="z-50">
+							<button className="mr-3 inline-flex items-center justify-center rounded-full bg-purple-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-purple-800 hover:scale-105 transition duration-200">
+								Únete
+								<svg
+									className="-mr-1 ml-2 h-5 w-5"
+									fill="currentColor"
+									viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+										clip-rule="evenodd"
+									></path>
+								</svg>
+							</button>
+						</Link>
 					</div>
 				</div>
 				<div className="relative items-center md:col-span-6 md:mt-0 md:flex md:mb-0 ">
@@ -58,25 +56,23 @@ export const Hero = () => {
 					</div>
 				</div>
 				<div className="flex md:hidden justify-center md:ml-16 md:justify-start">
-					<button className="mr-3 inline-flex items-center justify-center rounded-full bg-purple-800 px-5 py-3 text-center text-base font-medium text-white hover:bg-purple-700 focus:bg-purple-700 focus:ring-4 dark:focus:ring-primary-900">
-						Únete
-						<svg
-							className="-mr-1 ml-2 h-5 w-5"
-							fill="currentColor"
-							viewBox="0 0 20 20"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-								clip-rule="evenodd"
-							></path>
-						</svg>
-					</button>
-					<button className="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-						{" "}
-						Speak to Sales{" "}
-					</button>
+					<Link href="/contacto" className="z-50">
+						<button className="mr-3 inline-flex items-center justify-center rounded-full bg-purple-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-purple-800">
+							Únete
+							<svg
+								className="-mr-1 ml-2 h-5 w-5"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+									clip-rule="evenodd"
+								></path>
+							</svg>
+						</button>
+					</Link>
 				</div>
 				<div className="absolute bottom-28">
 					<div className="hidden lg:block lg:h-4 top-0">
@@ -87,7 +83,7 @@ export const Hero = () => {
 				</div>
 			</div>
 			<div className="flex mt-10 h-12 md:mt-16 lg:pt-24 xl:pt-32">
-				<a href="#news">
+				<Link href="/noticias" className="z-50">
 					<div className="absolute right-0 h-14 w-60 flex md:w-72 items-center justify-start bg-green-800 hover:scale-125 transition duration-100 hover:opacity-75 hover:cursor-pointer">
 						<div className="absolute right-3 h-14 w-64 flex md:w-80 -skew-x-12 items-center justify-start bg-green-800 pt-4">
 							<h1 className="mb-4 ml-6 flex max-w-xl text-4xl font-bold tracking-tight text-white md:text-4xl xl:text-4xl">
@@ -95,7 +91,7 @@ export const Hero = () => {
 							</h1>
 						</div>
 					</div>
-				</a>
+				</Link>
 			</div>
 			<div className="mx-auto grid max-w-screen-xl px-4 md:grid-cols-12 md:gap-8 md:py-0 xl:gap-0">
 				<div className="relative hidden md:items-center md:justify-start md:col-span-5 md:mt-0 md:flex">

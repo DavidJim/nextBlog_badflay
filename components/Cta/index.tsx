@@ -1,14 +1,28 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { GetStaticProps } from "next";
+import { getEventos } from "@/lib/service";
+import dayjs from "dayjs";
+import luciaFond from "../../public/images/luciafondo.jpg";
 
 const CountdownTimer = dynamic(() => import("../Utils/Timer"), {
 	ssr: false,
 });
 
-export const Cta = () => {
-	let targetDate = "05/03/2024";
-	let targetDate2 = "05/10/2024";
-	let targetDate3 = "05/18/2024";
+export const Cta = ({ posts }: { posts: any }) => {
+	const compararPorFecha = (a: any, b: any) => {
+		const fechaA = new Date(a.detalles.fecha);
+		const fechaB = new Date(b.detalles.fecha);
+		return fechaA.getTime() - fechaB.getTime();
+	};
+	const postsOrdered = posts.sort(compararPorFecha);
+
+	postsOrdered.map((post: any) => {
+		post.detalles.fechaFormato = dayjs(post.detalles.fecha).format(
+			"DD-MM-YYYY"
+		);
+		if (dayjs() > dayjs(post.detalles.fecha)) post.detalles.isLive = true;
+	});
 
 	return (
 		<section
@@ -21,72 +35,41 @@ export const Cta = () => {
 						PRÓXIMOS EVENTOS
 					</h1>
 					<section className="my-6 mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
-						<article
-							className="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition duration-300 ease-in-out"
-							style={{
-								backgroundImage: `url('https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-							}}
-						>
-							<div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
-							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex flex-col justify-between items-center">
-								<h3 className="text-center mt-10">
-									<a
-										className="text-white text-2xl font-bold text-center"
-										href="#"
-									>
-										<span className="absolute inset-0"></span>
-										Campeonato de España Sénior 2024
-									</a>
-								</h3>
-								<div className="text-center mb-10">
-									<CountdownTimer targetDate={targetDate}></CountdownTimer>
+						{/* Inicio Card */}
+						{postsOrdered.map((post: any) => {
+							return (
+								<div
+									key={postsOrdered.slug}
+									className="relative w-full h-64 bg-cover bg-top group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition duration-300 ease-in-out"
+									style={{
+										backgroundImage: `url('/images/GusFondo.jpg')`,
+									}}
+								>
+									<Link href={`/competicion/${post.slug}`}>
+										<div className="absolute inset-0 bg-black bg-opacity-60 group-hover:opacity-75 transition duration-300 ease-in-out"></div>{" "}
+										<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex flex-col justify-between items-center">
+											<h3 className="text-center mt-10">
+												<div className="text-white text-2xl font-bold text-center">
+													<span className="absolute inset-0"></span>
+													{post.detalles.tituloEvento}
+												</div>
+											</h3>
+											<div className="text-center mb-10">
+												{post.detalles.isLive ? (
+													<p className="text-2xl font-bold bg-red-500 rounded-full px-6 ">
+														Live!
+													</p>
+												) : (
+													<p className="text-xl font-bold rounded-full px-6 ">
+														{post.detalles.fechaFormato}
+													</p>
+												)}
+											</div>
+										</div>
+									</Link>
 								</div>
-							</div>
-						</article>
-						<article
-							className="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition duration-300 ease-in-out"
-							style={{
-								backgroundImage: `url('https://images.unsplash.com/photo-1599391398131-cd12dfc6c24e?q=80&w=2511&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-							}}
-						>
-							<div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
-							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex flex-col justify-between items-center">
-								<h3 className="text-center mt-10">
-									<a
-										className="text-white text-2xl font-bold text-center"
-										href="#"
-									>
-										<span className="absolute inset-0"></span>
-										Andalucía Autonómico Benalmádena sub-15 y sub-19
-									</a>
-								</h3>
-								<div className="text-center mb-10">
-									<CountdownTimer targetDate={targetDate2}></CountdownTimer>
-								</div>
-							</div>
-						</article>
-						<article
-							className="relative w-full h-64 bg-cover bg-center group rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out"
-							style={{
-								backgroundImage: `url('https://images.unsplash.com/photo-1595220427358-8cf2ce3d7f89?q=80&w=2676&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-							}}
-						>
-							<div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
-							<div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex flex-col justify-between items-center">
-								<h3 className="text-center mt-10">
-									<a
-										className="text-white text-2xl font-bold text-center"
-										href="#"
-									>
-										<span className="absolute inset-0"></span>
-										Andalucía Top TTR Humilladero sub-15 y sub-19
-									</a>
-								</h3>
-								<div className="text-center mb-10">
-									<CountdownTimer targetDate={targetDate3}></CountdownTimer>
-								</div>
-							</div>
-						</article>
+							);
+						})}
 					</section>
 				</div>
 				<div className="flex justify-center items-center">

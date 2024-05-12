@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import EquipoHome from "../../public/images/EquipoHome.png";
+import EquipoHome from "../../public/images/Logo.png";
 
 export default function Contacto({ posts }: { posts: any }) {
 	return (
 		<section className="container mx-auto py-12 md:py-6 md:pt-0 text-center border-b">
-			<div className="w-full pt-4 pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16 max-w-7xl">
-				<div className="relative flex pt-20 md:py-5 items-center">
+			<div className="w-full pt-4 pr-5 lg:pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 lg:space-y-16 max-w-7xl">
+				<div className="relative flex pt-20 lg:py-5 items-center">
 					<div className="flex-grow border-t border-gray-400"></div>
 					<span className="font-anton flex-shrink -skew-x-12 mx-4 text-[2rem] text-black">
 						CONTACTO
@@ -14,11 +14,11 @@ export default function Contacto({ posts }: { posts: any }) {
 					<div className="flex-grow border-t border-gray-400"></div>
 				</div>
 			</div>
-			<div className="relative grid grid-cols-12 justify-center items-center mx-4 ">
-				<div className="w-full max-w-[50rem] hidden lg:block lg:col-span-6 justify-center pr-10">
+			<div className="relative grid grid-cols-12 justify-center mx-4">
+				<div className="w-full scale-50 col-span-12 lg:block lg:col-span-6 lg:scale-75 xl:scale-50 justify-center pr-2">
 					<Image className="z-10" src={EquipoHome} alt="Logo" />
 				</div>
-				<form className="w-full max-w-[50rem] col-span-12 lg:col-span-6 lg:max-w-[40rem] justify-self">
+				<form className="w-full col-span-12 lg:col-span-6 lg:max-w-[40rem] justify-self">
 					<div className="flex flex-wrap -mx-3 mb-6">
 						<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 							<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">

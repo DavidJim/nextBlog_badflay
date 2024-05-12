@@ -4,7 +4,6 @@ import Image from "next/image";
 import defaultImage from "@/assets/images/defaultBad.jpg";
 
 export const PostBlock = ({ post }: { post: any }) => {
-	console.log(post);
 	return (
 		<div className="post-block p-2 rounded-md">
 			<Link href={`/noticias/${post.slug}`}>

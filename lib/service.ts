@@ -37,6 +37,17 @@ export async function getPostBySlug(slug: string) {
           sourceUrl
         }
       }
+      author {
+        node {
+          name
+        }
+      }
+      categories {
+              nodes {
+                name
+              }
+            }
+      date
       slug
       title
     }
@@ -100,6 +111,32 @@ export async function getEventos(first = 3) {
       nodes {
         detalles {
           categorias
+          streamlinks {
+          link1 {
+            url
+            title
+          }
+          link2 {
+            url
+            title
+          }
+          link3 {
+            url
+            title
+          }
+          link4 {
+            url
+            title
+          }
+          link5 {
+            url
+            title
+          }
+          link6 {
+            url
+            title
+          }
+        }
           descripcionEvento
           fecha
           federacion
@@ -127,7 +164,82 @@ export async function getEventos(first = 3) {
 			first,
 		},
 	});
-	console.log("EVENTOS-------", data?.posts?.nodes[0].detalles.categorias);
 
 	return data?.posts?.nodes;
+}
+
+export async function getEventoBySlug(slug: string) {
+	const data = await fetchAPI(
+		`query GetPost($id: ID = "") {
+    post(id: $id, idType: SLUG) {
+      detalles {
+          direccion
+          categorias
+          streamlinks {
+          link1 {
+            url
+            title
+          }
+          link2 {
+            url
+            title
+          }
+          link3 {
+            url
+            title
+          }
+          link4 {
+            url
+            title
+          }
+          link5 {
+            url
+            title
+          }
+          link6 {
+            url
+            title
+          }
+        }
+          descripcionEvento
+          fecha
+          federacion
+          imagen {
+            node {
+              sourceUrl
+            }
+          }
+          tituloEvento
+          urlEvento
+        }
+      content
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      date
+      slug
+      title
+    }
+  }`,
+		{
+			variables: {
+				id: slug,
+			},
+		}
+	);
+	let streamlinks = data.post.detalles.streamlinks;
+	if (data && streamlinks) {
+		for (let key in streamlinks) {
+			if (streamlinks[key] === null) {
+				delete data.post.detalles.streamlinks[key];
+			}
+		}
+	}
+	data.post.detalles.streamlinks = Object.values(
+		data.post.detalles.streamlinks
+	);
+	console.log("LINKS", data?.post.detalles.streamlinks);
+	return data?.post;
 }

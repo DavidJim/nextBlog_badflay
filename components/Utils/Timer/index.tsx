@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import dayjs from "dayjs";
 
 interface TimeLeft {
 	days: number;
@@ -14,7 +15,7 @@ interface Props {
 const CountdownTimer: React.FC<Props> = ({ targetDate }) => {
 	let liveStatus: Boolean = false;
 	const calculateTimeLeft = (): TimeLeft => {
-		const difference = +new Date(targetDate) - +new Date();
+		const difference = +dayjs(targetDate) - +dayjs();
 		let timeLeft: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
 		if (difference > 0) {
