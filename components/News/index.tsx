@@ -24,7 +24,7 @@ export const News = ({ posts }: { posts: any }) => {
 			className="flex flex-col mb-8 mx-auto relative justify-center text-center md:justify-start md:text-start"
 		>
 			<div className="container mx-auto">
-				<h1 className="font-anton md:ml-16 py-6 -skew-x-12 text-[4rem] lg:text-[4.5rem] dark:text-black">
+				<h1 className="font-anton md:ml-16 py-6 -skew-x-12 text-[4rem] lg:text-[4.5rem]">
 					NOTICIAS
 				</h1>
 				<div className="mx-4 py-8">

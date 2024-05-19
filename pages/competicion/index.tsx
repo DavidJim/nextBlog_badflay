@@ -10,18 +10,23 @@ const CountdownTimer = dynamic(() => import("../../components/Utils/Timer"), {
 	ssr: false,
 });
 
-export default function Competicion({ posts }: { posts: any }) {
+export default function Competicion({ eventos }: { eventos: any }) {
 	const compararPorFecha = (a: any, b: any) => {
 		const fechaA = new Date(a.detalles.fecha);
 		const fechaB = new Date(b.detalles.fecha);
 		return fechaA.getTime() - fechaB.getTime();
 	};
-	const postsOrdered = posts.sort(compararPorFecha);
+	const postsOrdered = eventos.sort(compararPorFecha);
 
-	postsOrdered.map((post: any) => {
-		post.detalles.fechaFormato = dayjs(post.detalles.fecha).format(
+	postsOrdered.map((evento: any) => {
+		evento.detalles.fechaFormato = dayjs(evento.detalles.fecha).format(
 			"DD/MM/YYYY"
 		);
+		evento.detalles.fechaFin
+			? (evento.detalles.fechaFinFormato = dayjs(
+					evento.detalles.fechaFin
+			  ).format("DD/MM/YYYY"))
+			: null;
 	});
 
 	return (
@@ -37,15 +42,15 @@ export default function Competicion({ posts }: { posts: any }) {
 			</div>
 			<div className="relative grid grid-cols-12 gap-4 justify-center mx-2">
 				{/* Inicio Card */}
-				{postsOrdered.map((post: any) => {
+				{postsOrdered.map((evento: any) => {
 					return (
 						<div
-							key={post.id}
+							key={evento.id}
 							className="col-span-12 md:col-span-6 xl:col-span-4 flex justify-center items-center"
 						>
 							<div className="w-full max-w-sm rounded-lg shadow-md transition duration-500 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
 								<div
-									className="relative transform overflow-hidden rounded-xl text-white shadow-lg"
+									className="relative transform overflow-hidden rounded-xl text-white shadow-lg bg-black"
 									data-movie-id="438631"
 								>
 									<div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-gray-900 to-transparent transition duration-300 ease-in-out"></div>
@@ -58,10 +63,10 @@ export default function Competicion({ posts }: { posts: any }) {
 														className="text-2xl font-bold text-white"
 														data-unsp-sanitized="clean"
 													>
-														{post?.detalles?.tituloEvento}
+														{evento?.detalles?.tituloEvento}
 													</h3>
 													<div className="mb-0 text-lg text-gray-400">
-														{post?.detalles?.federacion[0]}
+														{evento?.detalles?.federacion[0]}
 													</div>
 												</div>
 												<div className="flex flex-row justify-between">
@@ -69,29 +74,39 @@ export default function Competicion({ posts }: { posts: any }) {
 														<div className="text-sm text-gray-400">
 															Categorías
 														</div>
-														{post?.detalles?.categorias.map((category: any) => {
-															return (
-																<div key={category} className="text-[0.83rem]">
-																	{category}
-																</div>
-															);
-														})}
+														{evento?.detalles?.categorias.map(
+															(category: any) => {
+																return (
+																	<div
+																		key={category}
+																		className="text-[0.83rem]"
+																	>
+																		{category}
+																	</div>
+																);
+															}
+														)}
 													</div>
 													<div className="flex flex-col">
 														<div className="text-sm text-gray-400">Fecha</div>
 														<div className="text-[0.83rem]">
-															{post.detalles.fechaFormato}
+															{evento.detalles.fechaFormato}
 														</div>
+														{evento.detalles.fechaFin && (
+															<div className="text-[0.83rem]">
+																a {evento.detalles.fechaFinFormato}
+															</div>
+														)}
 													</div>
 													<div className="flex flex-col">
 														<div className="text-sm text-gray-400">URL</div>
 														<div className="text-[0.83rem]">
 															<Link
-																href={post?.detalles?.urlEvento}
+																href={evento?.detalles?.urlEvento}
 																target="_blank"
 															>
 																<IoOpenOutline
-																	href={post?.detalles?.urlEvento}
+																	href={evento?.detalles?.urlEvento}
 																	className="text-2xl"
 																/>
 															</Link>
@@ -104,7 +119,7 @@ export default function Competicion({ posts }: { posts: any }) {
 														Descripción:
 													</div>
 													<p className="mb-6 text-sm text-gray-100">
-														{post?.detalles?.descripcionEvento}
+														{evento?.detalles?.descripcionEvento}
 													</p>
 												</div>
 											</div>
@@ -114,13 +129,13 @@ export default function Competicion({ posts }: { posts: any }) {
 										className="absolute inset-0 w-full -translate-y-4 transform"
 										width={500}
 										height={500}
-										alt={post?.slug}
-										src={post?.detalles?.imagen?.node?.sourceUrl}
+										alt={evento?.slug}
+										src={evento?.detalles?.imagen?.node?.sourceUrl}
 									/>
 									<div className="poster__footer relative z-10 flex flex-row space-x-4 pb-10">
 										<Link
 											className="mx-auto flex items-center rounded-full bg-purple-800 px-4 py-2 text-white hover:bg-purple-900"
-											href={`/competicion/${post.slug}`}
+											href={`/competicion/${evento.slug}`}
 										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -141,8 +156,8 @@ export default function Competicion({ posts }: { posts: any }) {
 											</div>
 										</Link>
 									</div>
-									<div className="relative z-20 inset-x-0 bottom-0 mx-auto w-full mb-5 text-center text-2xl font-bold uppercase text-white drop-shadow-sm">
-										<CountdownTimer targetDate={post.detalles.fecha} />
+									<div className="relative z-20 inset-x-0 bottom-0 mx-10 mb-5 text-center text-2xl font-bold uppercase text-white drop-shadow-sm">
+										<CountdownTimer targetDate={evento.detalles.fecha} />
 									</div>
 								</div>
 							</div>
@@ -155,11 +170,24 @@ export default function Competicion({ posts }: { posts: any }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const posts = await getEventos(10); // retrieve first 100 posts
+	// Obtener la fecha actual usando dayjs
+	const fechaActual = dayjs();
+
+	// Extraer el año actual
+	const yearActual = fechaActual.year();
+
+	// Crear un objeto con el año actual y los valores deseados para el mes y el día
+	const fechaObjeto = {
+		year: yearActual,
+		month: 1,
+		day: 1,
+	};
+	const fechaFiltro = fechaActual.subtract(4, "day").format("YYYY-MM-DD");
+	const eventos = await getEventos(10, fechaObjeto, fechaFiltro);
 
 	return {
 		props: {
-			posts,
+			eventos,
 		},
 		revalidate: 3600,
 	};

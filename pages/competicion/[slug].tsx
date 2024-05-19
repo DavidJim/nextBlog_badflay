@@ -6,18 +6,27 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { getEventoBySlug, getEventos } from "@/lib/service";
 import dayjs from "dayjs";
 
-export default function CompeticionDetalle({ post }: { post: any }) {
-	post.detalles.fechaFormato = dayjs(post.detalles.fecha).format("DD/MM/YYYY");
+export default function CompeticionDetalle({ evento }: { evento: any }) {
+	evento.detalles.fechaFormato = dayjs(evento.detalles.fecha).format(
+		"DD/MM/YYYY"
+	);
+	evento.detalles.fechaFin
+		? (evento.detalles.fechaFinFormato = dayjs(evento.detalles.fechaFin).format(
+				"DD/MM/YYYY"
+		  ))
+		: null;
+
+	console.log(evento.detalles.fechaFin);
 	return (
 		<section className="container mx-auto py-12 md:py-6 md:pt-0 text-center border-b">
 			<div className="relative flex justify-center items-center pt-16 md:pt-8 pb-8 px-8">
 				<div className="bg-purple-900 rounded-xl flex-shrink -skew-x-12">
 					<h1 className="font-anton text-white text-[2rem] md:text-[2.5rem] mx-8">
-						{post?.detalles?.tituloEvento}
+						{evento?.detalles?.tituloEvento}
 					</h1>
 				</div>
 			</div>
-			{post.detalles.streamlinks.length > 0 && (
+			{evento.detalles.streamlinks.length > 0 && (
 				<div className="w-full lg:pt-4 pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:space-y-8 md:space-y-16 max-w-7xl">
 					<div className="relative flex items-center">
 						<div className="flex-grow border-t border-gray-400 mr-2"></div>
@@ -29,7 +38,7 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 						<div className="flex-grow border-t border-gray-400 ml-2"></div>
 					</div>
 					<div className="relative flex flex-col lg:flex-row lg:flex-wrap pb-8 justify-center">
-						{post.detalles.streamlinks.map((link: any) => {
+						{evento.detalles.streamlinks.map((link: any) => {
 							return (
 								<div
 									key="cualquiera"
@@ -67,10 +76,10 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 				<div className="lg:w-1/3 max-w-[100%] lg:max-w-[40%] rounded-lg p-2 px-8 md:px-auto lg:pr-4">
 					<Image
 						className="rounded-lg shadow-md"
-						src={post?.detalles?.imagen?.node?.sourceUrl}
+						src={evento?.detalles?.imagen?.node?.sourceUrl}
 						width={500}
 						height={500}
-						alt={post?.slug}
+						alt={evento?.slug}
 					/>
 				</div>
 				<div className="lg:w-2/3 lg:max-w-[70%]">
@@ -96,7 +105,13 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 
 									<div>
 										<h3 className="text-lg font-semibold md:text-xl">Fecha</h3>
-										<p className="mb-2">{post.detalles.fechaFormato}</p>
+										<p className="mb-2">{evento.detalles.fechaFormato}</p>
+										{evento.detalles.fechaFinFormato && (
+											<p className="mb-2">
+												{" "}
+												a {evento.detalles.fechaFinFormato}
+											</p>
+										)}
 									</div>
 								</div>
 								{/* <!-- feature - end --> */}
@@ -118,7 +133,7 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 										<h3 className="text-lg font-semibold md:text-xl">
 											Categorías
 										</h3>
-										{post?.detalles?.categorias.map((category: any) => {
+										{evento?.detalles?.categorias.map((category: any) => {
 											return (
 												<div key={category} className="mb-2">
 													{category}
@@ -151,7 +166,9 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 										<h3 className="text-lg font-semibold md:text-xl">
 											Descripción:
 										</h3>
-										<p className="mb-2">{post?.detalles?.descripcionEvento}</p>
+										<p className="mb-2">
+											{evento?.detalles?.descripcionEvento}
+										</p>
 									</div>
 								</div>
 								{/* <!-- feature - end --> */}
@@ -178,7 +195,7 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 											Localización:
 										</h3>
 										<p className="mb-2 text-purple-900">
-											<a href={post?.detalles?.direccion} target="_blank">
+											<a href={evento?.detalles?.direccion} target="_blank">
 												Ir a mapa
 											</a>
 										</p>
@@ -203,7 +220,7 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 											Sorteos y cuadros:
 										</h3>
 										<p className="mb-2 text-purple-900">
-											<a href={post?.detalles?.urlEvento}>Ver</a>
+											<a href={evento?.detalles?.urlEvento}>Ver</a>
 										</p>
 									</div>
 								</div>
@@ -225,7 +242,7 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 										<h3 className="text-lg font-semibold md:text-xl">
 											Participantes:
 										</h3>
-										{post?.detalles?.categorias.map((category: any) => {
+										{evento?.detalles?.categorias.map((category: any) => {
 											return (
 												<div key={category} className="mb-2">
 													{category}
@@ -245,18 +262,31 @@ export default function CompeticionDetalle({ post }: { post: any }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const posts = await getEventos(100);
+	// Obtener la fecha actual usando dayjs
+	const fechaActual = dayjs();
 
+	// Extraer el año actual
+	const yearActual = fechaActual.year();
+
+	// Crear un objeto con el año actual y los valores deseados para el mes y el día
+	const fechaObjeto = {
+		year: yearActual,
+		month: 1,
+		day: 1,
+	};
+	const fechaFiltro = dayjs().subtract(1, "year").format("YYYY-MM-DD");
+	const eventos = await getEventos(100, fechaObjeto, fechaFiltro);
+	console.log("EVENTOS PATH", eventos);
 	return {
-		paths: posts.map((post: any) => `/competicion/${post.slug}`),
+		paths: eventos.map((evento: any) => `/competicion/${evento.slug}`),
 		fallback: false,
 	};
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const post = await getEventoBySlug(params?.slug as string);
+	const evento = await getEventoBySlug(params?.slug as string);
 
 	return {
-		props: { post },
+		props: { evento },
 	};
 };

@@ -20,8 +20,8 @@ export const About = () => {
 						</p>
 
 						<Link href="/club">
-							<button className="mr-3 inline-flex justify-center items-center bg-purple-800 text-white text-sm py-4 px-12 rounded-full hover:scale-105 hover:opacity-80 transition duration-200">
-								Continúa Leyendo
+							<button className="inline-flex justify-center items-center bg-purple-800 text-white text-sm py-4 px-12 rounded-full hover:scale-105 hover:opacity-80 transition duration-200">
+								Más info
 								<svg
 									className="-mr-1 ml-2 h-5 w-5"
 									fill="currentColor"

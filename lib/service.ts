@@ -1,4 +1,5 @@
 import { fetchAPI } from "./base";
+import dayjs from "dayjs";
 
 // Obtención de posts
 export async function getPosts(first = 10) {
@@ -32,6 +33,9 @@ export async function getPostBySlug(slug: string) {
 		`query GetPost($id: ID = "") {
     post(id: $id, idType: SLUG) {
       content
+      imagenNoticias {
+          posicionImagen
+        }
       featuredImage {
         node {
           sourceUrl
@@ -41,6 +45,12 @@ export async function getPostBySlug(slug: string) {
         node {
           name
         }
+      }
+      next {
+      slug
+      }
+      previous {
+        slug
       }
       categories {
               nodes {
@@ -101,44 +111,89 @@ export async function getNews(first = 10) {
 		},
 	});
 
-	console.log("DATA", data.categories.nodes[0].posts);
 	return data?.categories?.nodes[0]?.posts?.nodes;
 }
 
-export async function getEventos(first = 3) {
-	const query = `query FetchEventos($first: Int = 10) {
-    posts(where: {categoryName: "Eventos"}, first: $first) {
+export async function getNewsV2(first = 10, after = "") {
+	const query = `query FetchPostsByCategory($first: Int, $after: String) {
+    posts(where: { categoryName: "Noticias" }, first: $first, after: $after) {
+      nodes {
+        excerpt
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+        imagenNoticias {
+          posicionImagen
+        }
+        slug
+        title
+        content
+        date
+        author {
+          node {
+            name
+          }
+        }
+        categories {
+          nodes {
+            name
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+  }`;
+
+	const data = await fetchAPI(query, {
+		variables: {
+			first,
+			after,
+		},
+	});
+
+	return data?.posts;
+}
+
+export async function getEventos(first = 3, afterDate = {}, fechaLimite = "") {
+	const query = `query FetchEventos($first: Int = 10, $afterDate: DateInput!) {
+    eventos(first: $first, where: {dateQuery: {after: $afterDate}}) {
       nodes {
         detalles {
           categorias
           streamlinks {
-          link1 {
-            url
-            title
+            link1 {
+              url
+              title
+            }
+            link2 {
+              url
+              title
+            }
+            link3 {
+              url
+              title
+            }
+            link4 {
+              url
+              title
+            }
+            link5 {
+              url
+              title
+            }
+            link6 {
+              url
+              title
+            }
           }
-          link2 {
-            url
-            title
-          }
-          link3 {
-            url
-            title
-          }
-          link4 {
-            url
-            title
-          }
-          link5 {
-            url
-            title
-          }
-          link6 {
-            url
-            title
-          }
-        }
           descripcionEvento
           fecha
+          fechaFin
           federacion
           imagen {
             node {
@@ -162,16 +217,22 @@ export async function getEventos(first = 3) {
 	const data = await fetchAPI(query, {
 		variables: {
 			first,
+			afterDate,
 		},
 	});
 
-	return data?.posts?.nodes;
+	const eventosFiltrados = filtrarEventosPorFecha(
+		data.eventos.nodes,
+		fechaLimite
+	);
+
+	return eventosFiltrados;
 }
 
 export async function getEventoBySlug(slug: string) {
 	const data = await fetchAPI(
-		`query GetPost($id: ID = "") {
-    post(id: $id, idType: SLUG) {
+		`query GetEvento($id: ID = "") {
+    evento(id: $id, idType: SLUG) {
       detalles {
           direccion
           categorias
@@ -203,6 +264,7 @@ export async function getEventoBySlug(slug: string) {
         }
           descripcionEvento
           fecha
+          fechaFin
           federacion
           imagen {
             node {
@@ -229,17 +291,31 @@ export async function getEventoBySlug(slug: string) {
 			},
 		}
 	);
-	let streamlinks = data.post.detalles.streamlinks;
-	if (data && streamlinks) {
+	let streamlinks = data.evento.detalles.streamlinks;
+	if (streamlinks) {
 		for (let key in streamlinks) {
 			if (streamlinks[key] === null) {
-				delete data.post.detalles.streamlinks[key];
+				delete data.evento.detalles.streamlinks[key];
 			}
 		}
 	}
-	data.post.detalles.streamlinks = Object.values(
-		data.post.detalles.streamlinks
+	data.evento.detalles.streamlinks = Object.values(
+		data.evento.detalles.streamlinks
 	);
-	console.log("LINKS", data?.post.detalles.streamlinks);
-	return data?.post;
+	console.log("LINKS", data?.evento.detalles.streamlinks);
+	return data?.evento;
+}
+
+function filtrarEventosPorFecha(eventos: any, fechaLimite: string) {
+	// Convertir la fecha límite a un objeto dayjs
+	const fechaLimiteDate = dayjs(fechaLimite);
+
+	// Filtrar los eventos
+	return eventos.filter((evento: any) => {
+		// Obtener la fecha del campo 'detalles.fecha'
+		const fechaEvento = dayjs(evento.detalles.fecha);
+
+		// Comparar las fechas
+		return fechaEvento.isAfter(fechaLimiteDate);
+	});
 }

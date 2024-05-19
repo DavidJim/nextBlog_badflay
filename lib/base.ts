@@ -6,21 +6,27 @@ export async function fetchAPI(
 ) {
 	const headers = { "Content-Type": "application/json" };
 
-	const res = await fetch(API_URL, {
-		headers,
-		method: "POST",
-		body: JSON.stringify({
-			query,
-			variables,
-		}),
-	});
+	try {
+		const res = await fetch(API_URL, {
+			headers,
+			method: "POST",
+			body: JSON.stringify({
+				query,
+				variables,
+			}),
+			referrerPolicy: "unsafe-url",
+		});
 
-	const json = await res.json();
+		const json = await res.json();
 
-	if (json.errors) {
-		console.error(json.errors);
-		throw new Error("Failed to fetch API");
+		if (json.errors) {
+			console.error(json.errors);
+			console.log("ERROR");
+			throw new Error("Failed to fetch API");
+		}
+
+		return json.data;
+	} catch (err) {
+		console.log("ERROR---- ", err);
 	}
-
-	return json.data;
 }

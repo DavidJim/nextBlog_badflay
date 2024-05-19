@@ -1,19 +1,30 @@
 import { About } from "@/components/About";
-import { GetStaticProps, GetStaticPaths } from "next";
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 import { getNews, getPostBySlug } from "@/lib/service";
 import { styles } from "../../components/Utils/styles_innerHtml";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function post({ post }: { post: any }) {
 	return (
 		<section className="container mx-auto py-12 md:py-6 md:pt-0 text-center border-b">
-			<div className="flex justify-center items-center">
-				<div
-					className="h-[30rem] md:h-[50] w-full lg:w-5/6 xl:w-3/4 bg-cover bg-center"
+			<div className={`flex justify-center `}>
+				{/* <div
+					className={`h-[30rem] md:h-[50] w-full lg:w-5/6 xl:w-3/4 bg-cover bg-${post.imagenNoticias.posicionImagen[0]}`}
 					style={{
 						backgroundImage: `url(${post?.featuredImage?.node?.sourceUrl})`,
 					}}
-					title="Woman holding a mug"
-				></div>
+				></div> */}
+				<div
+					className={`h-[20rem] md:h-[30rem] w-full lg:w-5/6 xl:w-3/4 relative flex justify-start items-${post.imagenNoticias.posicionImagen[0]}`}
+				>
+					<Image
+						src={post?.featuredImage?.node?.sourceUrl}
+						fill={true}
+						alt={post?.title}
+						className={`object-cover`}
+					/>
+				</div>
 			</div>
 			<div className="max-w-3xl mx-6 lg:mx-auto">
 				<div className="mt-3 bg-white rounded-lg flex flex-col justify-between leading-normal">
@@ -43,16 +54,138 @@ export default function post({ post }: { post: any }) {
 								__html: styles.paragraphNew + post.content,
 							}}
 						></div>
+						<div className="flex justify-center items-center text-gray-600 mt-8 lg:mt-4">
+							{post.previous?.slug && (
+								<div className="relative flex justify-center items-center">
+									<Link
+										key={post.previous.slug}
+										href={`/noticias/${post.previous.slug}`}
+										className="px-2 ml-4 rounded hover:bg-gray-100"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											className="h-6 w-6"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="purple"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M15 19l-7-7 7-7"
+											/>
+										</svg>
+									</Link>
+									<Link
+										href={`/noticias/${post.previous.slug}`}
+										className="px-4 py-2 rounded hover:bg-gray-100 text-[1rem] md:text-lg text-purple-700"
+									>
+										Noticia anterior
+									</Link>
+								</div>
+							)}
+							{post.next?.slug && (
+								<div className="relative flex justify-center items-center">
+									<Link
+										href={`/noticias/${post.next.slug}`}
+										className="px-4 py-2 rounded hover:bg-gray-100 text-[1rem] md:text-lg text-purple-700"
+									>
+										Siguiente noticia
+									</Link>
+									<Link
+										href={`/noticias/${post.next.slug}`}
+										className="p-2 mr-4 rounded hover:bg-gray-100"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											className="h-6 w-6"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="purple"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M9 5l7 7-7 7"
+											/>
+										</svg>
+									</Link>
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
+			{/* <div className="flex justify-center items-center text-gray-600 mt-8 lg:mt-4">
+				{post.previous?.slug && (
+					<div className="relative flex justify-center items-center">
+						<Link
+							key={post.next.slug}
+							href={`/noticias/${post.previous.slug}`}
+							className="px-2 ml-4 rounded hover:bg-gray-100"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								className="h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M15 19l-7-7 7-7"
+								/>
+							</svg>
+						</Link>
+						<Link
+							href={`/noticias/${post.previous.slug}`}
+							className="px-4 py-2 rounded hover:bg-gray-100 text-[1rem] md:text-md text-purple-700"
+						>
+							Ver noticia anterior
+						</Link>
+					</div>
+				)}
+				{post.next?.slug && (
+					<div className="relative flex justify-center items-center">
+						<Link
+							href={`/noticias/${post.next.slug}`}
+							className="px-4 py-2 rounded hover:bg-gray-100 text-[1rem] md:text-md text-purple-700"
+						>
+							Siguiente noticia
+						</Link>
+						<Link
+							href={`/noticias/${post.next.slug}`}
+							className="p-2 mr-4 rounded hover:bg-gray-100"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								className="h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 5l7 7-7 7"
+								/>
+							</svg>
+						</Link>
+					</div>
+				)}
+			</div> */}
 			{/* Hacer sección de imágenes en caso de que el post las traiga, con un divisor como el de sección */}
 		</section>
 	);
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const posts = await getNews(100); // retrieve first 100 posts
+	const posts = await getNews(100);
 
 	return {
 		paths: posts.map((post: any) => `/noticias/${post.slug}`),
@@ -62,6 +195,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const post = await getPostBySlug(params?.slug as string);
+	console.log(post);
 
 	return {
 		props: { post },

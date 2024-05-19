@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import EquipoHome from "../../public/images/EquipoHome.png";
+import EquipoHome from "../../public/images/equipo2024.png";
 import MobileHome from "../../public/images/mobile2.png";
 
 export const Hero = () => {
@@ -18,7 +18,7 @@ export const Hero = () => {
 						/>
 					</div>
 					<div className="flex justify-center text-center md:ml-16 md:justify-start md:text-start">
-						<h1 className="font-anton mb-4 max-w-2xl py-6 text-[2.5rem]/[3rem] -skew-x-12 md:text-5xl/[4rem] xl:text-6xl/[4rem] dark:text-black">
+						<h1 className="font-anton mb-4 max-w-2xl py-6 text-[2.5rem]/[3rem] -skew-x-12 md:text-5xl/[4rem] xl:text-6xl/[4rem]">
 							Tu club de bádminton en Jaén
 						</h1>
 					</div>
@@ -45,18 +45,18 @@ export const Hero = () => {
 				<div className="relative items-center md:col-span-6 md:mt-0 md:flex md:mb-0 ">
 					<div className="absolute -z-10 right-0 -top-8 mr-8 md:mr-auto md:top-28 flex bg-purple-800 h-36 w-36 md:h-36 md:w-36 rounded-full lg:h-40 lg:w-40 lg:top-2 xl:top-0 xl:mr-8"></div>
 					<Image
-						className="flex sm:relative md:pt-40 md:absolute z-10 object-contain lg:pt-24 md:scale-[1.2] xl:scale-100"
+						className="flex sm:relative sm:pt-0 md:pt-12 md:absolute z-10 object-contain scale-[1.3] lg:pt-12 md:scale-[1.5]"
 						src={EquipoHome}
 						alt="mockup"
 					/>
-					<div className="relative md:absolute md:-left-7 bottom-7 md:-bottom-6 md:justify-self items-center md:h-[3rem] -z-10 lg:hidden">
+					<div className="relative md:absolute md:-left-7 bottom-0 md:-bottom-0 md:justify-self items-center md:h-[3rem] -z-10 lg:hidden">
 						<h1 className="font-robotReavers bottom-0 text-6xl md:text-[5rem] tracking-tighter text-white opacity-60">
 							<span className="inline-block">BADFLAY</span>
 						</h1>
 					</div>
 				</div>
 				<div className="flex md:hidden justify-center md:ml-16 md:justify-start">
-					<Link href="/contacto" className="z-50">
+					<Link href="/contacto" className="z-20">
 						<button className="mr-3 inline-flex items-center justify-center rounded-full bg-purple-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-purple-800">
 							Únete
 							<svg
@@ -83,7 +83,7 @@ export const Hero = () => {
 				</div>
 			</div>
 			<div className="flex mt-10 h-12 md:mt-16 lg:pt-24 xl:pt-32">
-				<Link href="/noticias" className="z-50">
+				<Link href="/noticias" className="z-20">
 					<div className="absolute right-0 h-14 w-60 flex md:w-72 items-center justify-start bg-green-800 hover:scale-125 transition duration-100 hover:opacity-75 hover:cursor-pointer">
 						<div className="absolute right-3 h-14 w-64 flex md:w-80 -skew-x-12 items-center justify-start bg-green-800 pt-4">
 							<h1 className="mb-4 ml-6 flex max-w-xl text-4xl font-bold tracking-tight text-white md:text-4xl xl:text-4xl">
@@ -106,7 +106,7 @@ export const Hero = () => {
 				<div className="md:col-span-1"></div>
 				<div className="grid md:col-span-6 md:mr-auto md:place-self-center">
 					<div className="xs:hidden md:flex justify-center pt-10 text-center md:-mt-40 md:justify-start md:pt-0 md:text-start">
-						<h1 className="font-anton -skew-x-12 mb-4 max-w-2xl py-6 text-[2.75rem]/[3rem] md:text-5xl/[4rem] xl:text-6xl/[4rem] dark:text-dark">
+						<h1 className="font-anton -skew-x-12 mb-4 max-w-2xl py-6 text-[2.75rem]/[3rem] md:text-5xl/[4rem] xl:text-6xl/[4rem]">
 							Síguenos en redes
 						</h1>
 						<Image

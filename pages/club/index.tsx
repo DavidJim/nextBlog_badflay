@@ -27,7 +27,7 @@ export default function Club({ posts }: { posts: any }) {
 								: "text-black border-2 border-green-700 md:border-none md:bg-transparent"
 						}`}
 					>
-						<span className="font-anton flex-shrink -skew-x-12 mx-4 text-[2rem]">
+						<span className="font-anton flex-shrink -skew-x-12 mx-4 text-[1.5rem] sm:text-[2rem]">
 							EL CLUB
 						</span>
 					</button>
@@ -42,7 +42,7 @@ export default function Club({ posts }: { posts: any }) {
 								: "text-black border-2 border-purple-800 md:border-none md:bg-transparent"
 						}`}
 					>
-						<span className="font-anton flex-shrink -skew-x-12 mx-4 text-[2rem]">
+						<span className="font-anton flex-shrink -skew-x-12 mx-4 text-[1.5rem] sm:text-[2rem]">
 							ESCUELA
 						</span>
 					</button>
@@ -123,80 +123,82 @@ export default function Club({ posts }: { posts: any }) {
 				</div>
 			</div>
 			{/* <!-- Details Section Start Here  --> */}
-			<div
-				id="detalles"
-				className="flex pt-4 pb-8 lg:pt-12 justify-center items-center text-start"
-			>
-				<div className="mx-8 px-4 md:px-8 md:mb-12">
-					{/* <!-- text - start --> */}
-					<div className="mb-10 md:mb-16">
-						<h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
-							Detalles curso 2023/24
-						</h2>
-					</div>
-					{/* <!-- text - end --> */}
-
-					<div className="grid gap-8 sm:grid-cols-2 md:gap-12 xl:grid-cols-2 xl:gap-16">
-						{/* <!-- feature - start --> */}
-						<div className="flex gap-4 md:gap-6">
-							<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-purple-800 text-white shadow-lg md:h-14 md:w-14 md:rounded-xl">
-								<svg
-									fill="none"
-									stroke="currentColor"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									viewBox="0 0 24 24"
-									height="2em"
-									width="2em"
-								>
-									<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-									<path d="M15 10 A3 3 0 0 1 12 13 A3 3 0 0 1 9 10 A3 3 0 0 1 15 10 z" />
-								</svg>
-							</div>
-
-							<div>
-								<h3 className="text-lg font-semibold md:text-xl">
-									Localización
-								</h3>
-								<p className="mb-2 text-gray-500">Gimnasio de La Salobreja</p>
-								<a
-									href="https://maps.app.goo.gl/4aBpA9T2ueuJTY9a7"
-									className="font-bold text-purple-800 transition duration-100 hover:text-purple-900 active:text-purple-900"
-									target="_blank"
-								>
-									Mapa
-								</a>
-							</div>
+			{activeTab === 2 && (
+				<div
+					id="detalles"
+					className="flex pt-4 pb-8 lg:pt-12 justify-center items-center text-start"
+				>
+					<div className="mx-8 px-4 md:px-8 md:mb-12">
+						{/* <!-- text - start --> */}
+						<div className="mb-10 md:mb-16">
+							<h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
+								Detalles curso 2023/24
+							</h2>
 						</div>
-						{/* <!-- feature - end --> */}
+						{/* <!-- text - end --> */}
 
-						{/* <!-- feature - start --> */}
-						<div className="flex gap-4 md:gap-6">
-							<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-purple-800 text-white shadow-lg md:h-14 md:w-14 md:rounded-xl">
-								<svg
-									viewBox="0 0 24 24"
-									fill="currentColor"
-									height="2em"
-									width="2em"
-								>
-									<path d="M6 1v2H5c-1.11 0-2 .89-2 2v14a2 2 0 002 2h6.1c1.26 1.24 2.99 2 4.9 2 3.87 0 7-3.13 7-7 0-1.91-.76-3.64-2-4.9V5a2 2 0 00-2-2h-1V1h-2v2H8V1M5 5h14v2H5m0 2h14v.67c-.91-.43-1.93-.67-3-.67-3.87 0-7 3.13-7 7 0 1.07.24 2.09.67 3H5m11-7.85c2.68 0 4.85 2.17 4.85 4.85 0 2.68-2.17 4.85-4.85 4.85-2.68 0-4.85-2.17-4.85-4.85 0-2.68 2.17-4.85 4.85-4.85M15 13v3.69l3.19 1.84.75-1.3-2.44-1.41V13z" />
-								</svg>
-							</div>
+						<div className="grid gap-8 sm:grid-cols-2 md:gap-12 xl:grid-cols-2 xl:gap-16">
+							{/* <!-- feature - start --> */}
+							<div className="flex gap-4 md:gap-6">
+								<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-purple-800 text-white shadow-lg md:h-14 md:w-14 md:rounded-xl">
+									<svg
+										fill="none"
+										stroke="currentColor"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										viewBox="0 0 24 24"
+										height="2em"
+										width="2em"
+									>
+										<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+										<path d="M15 10 A3 3 0 0 1 12 13 A3 3 0 0 1 9 10 A3 3 0 0 1 15 10 z" />
+									</svg>
+								</div>
 
-							<div>
-								<h3 className="text-lg font-semibold md:text-xl">
-									Días y Horario
-								</h3>
-								<p className="mb-2 text-gray-500">
-									Martes y viernes de 16:30 a 18:00 horas
-								</p>
+								<div>
+									<h3 className="text-lg font-semibold md:text-xl">
+										Localización
+									</h3>
+									<p className="mb-2 text-gray-500">Gimnasio de La Salobreja</p>
+									<a
+										href="https://maps.app.goo.gl/4aBpA9T2ueuJTY9a7"
+										className="font-bold text-purple-800 transition duration-100 hover:text-purple-900 active:text-purple-900"
+										target="_blank"
+									>
+										Mapa
+									</a>
+								</div>
 							</div>
+							{/* <!-- feature - end --> */}
+
+							{/* <!-- feature - start --> */}
+							<div className="flex gap-4 md:gap-6">
+								<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-purple-800 text-white shadow-lg md:h-14 md:w-14 md:rounded-xl">
+									<svg
+										viewBox="0 0 24 24"
+										fill="currentColor"
+										height="2em"
+										width="2em"
+									>
+										<path d="M6 1v2H5c-1.11 0-2 .89-2 2v14a2 2 0 002 2h6.1c1.26 1.24 2.99 2 4.9 2 3.87 0 7-3.13 7-7 0-1.91-.76-3.64-2-4.9V5a2 2 0 00-2-2h-1V1h-2v2H8V1M5 5h14v2H5m0 2h14v.67c-.91-.43-1.93-.67-3-.67-3.87 0-7 3.13-7 7 0 1.07.24 2.09.67 3H5m11-7.85c2.68 0 4.85 2.17 4.85 4.85 0 2.68-2.17 4.85-4.85 4.85-2.68 0-4.85-2.17-4.85-4.85 0-2.68 2.17-4.85 4.85-4.85M15 13v3.69l3.19 1.84.75-1.3-2.44-1.41V13z" />
+									</svg>
+								</div>
+
+								<div>
+									<h3 className="text-lg font-semibold md:text-xl">
+										Días y Horario
+									</h3>
+									<p className="mb-2 text-gray-500">
+										Martes y viernes de 16:30 a 18:00 horas
+									</p>
+								</div>
+							</div>
+							{/* <!-- feature - end --> */}
 						</div>
-						{/* <!-- feature - end --> */}
 					</div>
 				</div>
-			</div>
+			)}
 			<div className="flex justify-center">
 				<div className="flex justify-center items-center">
 					<Link href="/contacto">

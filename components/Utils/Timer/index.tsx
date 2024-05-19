@@ -51,7 +51,7 @@ const CountdownTimer: React.FC<Props> = ({ targetDate }) => {
 	)}:${formatTime(timeLeft.minutes)}:${formatTime(timeLeft.seconds)}`;
 
 	return (
-		<div>
+		<div className="justify-center items-center">
 			{liveStatus ? (
 				<p className="text-2xl font-bold bg-red-500 rounded-full px-6 ">
 					Live!
