@@ -82,17 +82,19 @@ export const Nav = () => {
 						</div>
 					</div>
 					<div className="hidden md:block absolute right-4 top-4 lg:right-8 md:top-7 md:text-xl">
-						<button
-							type="button"
-							className={`relative flex items-center justify-center border-2 border-x-2 text-purple-900 border-purple-900 rounded-full hover:bg-purple-900  hover:text-white transition-all duration-300 ${
-								hovered ? "lg:w-32" : "w-12"
-							}`}
-							onMouseEnter={() => setHovered(true)}
-							onMouseLeave={() => setHovered(false)}
-						>
-							<FaUser className="m-3" />
-							{hovered && <span className="hidden lg:block mr-2">Login</span>}
-						</button>
+						<Link href="/login">
+							<button
+								type="button"
+								className={`relative flex items-center justify-center border-2 border-x-2 text-purple-900 border-purple-900 rounded-full hover:bg-purple-900  hover:text-white transition-all duration-300 ${
+									hovered ? "lg:w-32" : "w-12"
+								}`}
+								onMouseEnter={() => setHovered(true)}
+								onMouseLeave={() => setHovered(false)}
+							>
+								<FaUser className="m-3" />
+								{hovered && <span className="hidden lg:block mr-2">Login</span>}
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>
@@ -154,13 +156,15 @@ export const Nav = () => {
 				}`}
 			>
 				<div className="flex items-center justify-between p-4 text-base bg-white text-purple-900 z-50 overflow-y-hidden">
-					<Image
-						src="/images/logo.png"
-						alt="Picture of the author"
-						height={120}
-						width={120}
-						className=""
-					></Image>
+					<Link href="/">
+						<Image
+							src="/images/logo.png"
+							alt="Picture of the author"
+							height={120}
+							width={120}
+							className=""
+						></Image>
+					</Link>
 					<button
 						onClick={toggleOpened}
 						className={`transition duration-200 ease-in-out transform hover:scale-110 z-[1] ${
@@ -196,13 +200,15 @@ export const Nav = () => {
 							Contacto
 						</Link>
 						<div className="py-4 text-xl" onClick={toggleOpened}>
-							<button
-								type="button"
-								className="relative flex items-center justify-center border-2 border-x-2 text-purple-900 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white w-32"
-							>
-								<FaUser className="m-3" />
-								<span className="mr-2">Login</span>
-							</button>
+							<Link href="/login" onClick={toggleOpened}>
+								<button
+									type="button"
+									className="relative flex items-center justify-center border-2 border-x-2 text-purple-900 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white w-32"
+								>
+									<FaUser className="m-3" />
+									<span className="mr-2">Login</span>
+								</button>
+							</Link>
 						</div>
 					</div>
 				</div>

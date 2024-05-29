@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import EquipoHome from "../../public/images/equipo2024.png";
-import MobileHome from "../../public/images/mobile2.png";
+import EquipoHome from "../../public/images/home/home_equipo_principal.png";
+import MobileHome from "../../public/images/home/home_movil_mock.png";
 
 export const Hero = () => {
 	return (
@@ -33,9 +33,9 @@ export const Hero = () => {
 									xmlns="http://www.w3.org/2000/svg"
 								>
 									<path
-										fill-rule="evenodd"
+										fillRule="evenodd"
 										d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-										clip-rule="evenodd"
+										clipRule="evenodd"
 									></path>
 								</svg>
 							</button>
@@ -66,9 +66,9 @@ export const Hero = () => {
 								xmlns="http://www.w3.org/2000/svg"
 							>
 								<path
-									fill-rule="evenodd"
+									fillRule="evenodd"
 									d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-									clip-rule="evenodd"
+									clipRule="evenodd"
 								></path>
 							</svg>
 						</button>
@@ -84,7 +84,7 @@ export const Hero = () => {
 			</div>
 			<div className="flex mt-10 h-12 md:mt-16 lg:pt-24 xl:pt-32">
 				<Link href="/noticias" className="z-20">
-					<div className="absolute right-0 h-14 w-60 flex md:w-72 items-center justify-start bg-green-800 hover:scale-125 transition duration-100 hover:opacity-75 hover:cursor-pointer">
+					<div className="absolute right-0 h-14 w-60 flex md:w-72 items-center justify-start bg-green-800 md:hover:scale-125 lg:transition lg:duration-100 hover:opacity-75 hover:cursor-pointer">
 						<div className="absolute right-3 h-14 w-64 flex md:w-80 -skew-x-12 items-center justify-start bg-green-800 pt-4">
 							<h1 className="mb-4 ml-6 flex max-w-xl text-4xl font-bold tracking-tight text-white md:text-4xl xl:text-4xl">
 								ÚLTIMO POST
@@ -97,7 +97,7 @@ export const Hero = () => {
 				<div className="relative hidden md:items-center md:justify-start md:col-span-5 md:mt-0 md:flex">
 					<div className="absolute md:right-16 top-4 md:flex bg-purple-800 md:h-1/3 md:w-1/2 md:rounded-full lg:h-1/3 lg:w-1/2"></div>
 					<Image
-						className="hidden md:flex z-10 object-contain md:h-4/5 md:w-4/5 lg:h-4/5 lg:w-4/5"
+						className="hidden md:flex z-10 object-contain md:h-4/5 md:w-4/5 lg:h-4/5 lg:w-4/5 drop-shadow-2xl"
 						src={MobileHome}
 						alt="mockup"
 					/>
@@ -117,36 +117,43 @@ export const Hero = () => {
 					</div>
 					<div className="flex justify-center md:justify-start"></div>
 					<div className="flex flex-col justify-center md:justify-center">
-						<div className="flex flex-row gap-2 justify-start items-center">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								x="0px"
-								y="0px"
-								viewBox="0 0 50 50"
-								fill="purple"
-								className="w-12 h-12 hover:scale-105 hover:opacity-75 hover:cursor-pointer transition duration-300"
-							>
-								<path d="M 11 4 C 7.1456661 4 4 7.1456661 4 11 L 4 39 C 4 42.854334 7.1456661 46 11 46 L 39 46 C 42.854334 46 46 42.854334 46 39 L 46 11 C 46 7.1456661 42.854334 4 39 4 L 11 4 z M 11 6 L 39 6 C 41.773666 6 44 8.2263339 44 11 L 44 39 C 44 41.773666 41.773666 44 39 44 L 11 44 C 8.2263339 44 6 41.773666 6 39 L 6 11 C 6 8.2263339 8.2263339 6 11 6 z M 13.085938 13 L 22.308594 26.103516 L 13 37 L 15.5 37 L 23.4375 27.707031 L 29.976562 37 L 37.914062 37 L 27.789062 22.613281 L 36 13 L 33.5 13 L 26.660156 21.009766 L 21.023438 13 L 13.085938 13 z M 16.914062 15 L 19.978516 15 L 34.085938 35 L 31.021484 35 L 16.914062 15 z"></path>
-							</svg>
-							<h2 className="font-anton -skew-x-12 text-xl lg:text-3xl">
-								@clubbadmintonbadflayjaen
-							</h2>
-						</div>
-						<div className="flex flex-row gap-2 justify-start items-center">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								x="0px"
-								y="0px"
-								viewBox="0 0 50 50"
-								fill="purple"
-								className="w-12 h-12 hover:scale-105 hover:opacity-75 hover:cursor-pointer transition duration-300"
-							>
-								<path d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"></path>
-							</svg>
-							<h2 className="font-anton -skew-x-12 text-xl lg:text-3xl">
-								@badflayjaen
-							</h2>
-						</div>
+						<Link href="https://twitter.com/ClubBadflayJaen" target="_blank">
+							<div className="flex flex-row gap-2 justify-start items-center lg:hover:scale-105 hover:opacity-75 hover:cursor-pointer lg:transition lg:duration-300">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									x="0px"
+									y="0px"
+									viewBox="0 0 50 50"
+									fill="purple"
+									className="w-12 h-12"
+								>
+									<path d="M 11 4 C 7.1456661 4 4 7.1456661 4 11 L 4 39 C 4 42.854334 7.1456661 46 11 46 L 39 46 C 42.854334 46 46 42.854334 46 39 L 46 11 C 46 7.1456661 42.854334 4 39 4 L 11 4 z M 11 6 L 39 6 C 41.773666 6 44 8.2263339 44 11 L 44 39 C 44 41.773666 41.773666 44 39 44 L 11 44 C 8.2263339 44 6 41.773666 6 39 L 6 11 C 6 8.2263339 8.2263339 6 11 6 z M 13.085938 13 L 22.308594 26.103516 L 13 37 L 15.5 37 L 23.4375 27.707031 L 29.976562 37 L 37.914062 37 L 27.789062 22.613281 L 36 13 L 33.5 13 L 26.660156 21.009766 L 21.023438 13 L 13.085938 13 z M 16.914062 15 L 19.978516 15 L 34.085938 35 L 31.021484 35 L 16.914062 15 z"></path>
+								</svg>
+								<h2 className="font-anton -skew-x-12 text-xl lg:text-3xl">
+									@ClubBadflayJaen
+								</h2>
+							</div>
+						</Link>
+						<Link
+							href="https://www.instagram.com/clubbadmintonbadflayjaen"
+							target="_blank"
+						>
+							<div className="flex flex-row gap-2 justify-start items-center pt-4 lg:hover:scale-105 hover:opacity-75 hover:cursor-pointer lg:transition lg:duration-300">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									x="0px"
+									y="0px"
+									viewBox="0 0 50 50"
+									fill="purple"
+									className="w-12 h-12"
+								>
+									<path d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"></path>
+								</svg>
+								<h2 className="font-anton -skew-x-12 text-xl lg:text-3xl">
+									@clubbadmintonbadflayjaen
+								</h2>
+							</div>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ export const About = () => {
 		<section
 			id="club"
 			className="bg-cover bg-center h-screen flex justify-center items-center md:pt-6"
-			style={{ backgroundImage: `url('/images/familia.png')` }}
+			style={{ backgroundImage: `url('/images/home/home_fondo_club.png')` }}
 		>
 			<div className="container md:mx-auto text-white">
 				<div className="flex items-center justify-center md:justify-start">
@@ -14,8 +14,8 @@ export const About = () => {
 							SOBRE NUESTRA FAMILIA BADFLAYERA
 						</h1>
 						<p className="text-lg mb-12">
-							Somos un grupo de amigos, enamorados del badminton, que estamos
-							luchando para que la práctica de este deporte sea cada dia mas
+							Somos un grupo de amigos, enamorados del bádminton, que estamos
+							luchando para que la práctica de este deporte sea cada día mas
 							habitual en Jaén.
 						</p>
 
@@ -29,9 +29,9 @@ export const About = () => {
 									xmlns="http://www.w3.org/2000/svg"
 								>
 									<path
-										fill-rule="evenodd"
+										fillRule="evenodd"
 										d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-										clip-rule="evenodd"
+										clipRule="evenodd"
 									></path>
 								</svg>
 							</button>

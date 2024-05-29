@@ -16,7 +16,6 @@ export default function CompeticionDetalle({ evento }: { evento: any }) {
 		  ))
 		: null;
 
-	console.log(evento.detalles.fechaFin);
 	return (
 		<section className="container mx-auto py-12 md:py-6 md:pt-0 text-center border-b">
 			<div className="relative flex justify-center items-center pt-16 md:pt-8 pb-8 px-8">
@@ -275,7 +274,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		day: 1,
 	};
 	const fechaFiltro = dayjs().subtract(1, "year").format("YYYY-MM-DD");
-	const eventos = await getEventos(100, fechaObjeto, fechaFiltro);
+	const eventos = await getEventos(100, "", fechaObjeto, fechaFiltro);
 	console.log("EVENTOS PATH", eventos);
 	return {
 		paths: eventos.map((evento: any) => `/competicion/${evento.slug}`),

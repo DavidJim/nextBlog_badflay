@@ -17,20 +17,16 @@ export default function News({
 	const [nextPage, setNextPage] = useState(pageInfo.hasNextPage);
 
 	const handleClick = async (endCursor: string) => {
-		console.log("ENTRO EN FUNCIÖN CLICK");
 		const newPosts = await getNewsV2(3, endCursor);
 		newPosts.nodes.map((post: any) => {
 			post.date = dayjs(post.date).format("DD/MM/YYYY");
 		});
 		!newPosts.pageInfo.hasNextPage && setNextPage(false);
-		console.log("NEW PageInfo ----", pageInfo.hasNextPage);
 		setNews(news.concat(newPosts.nodes));
 		let oldPosts = news.slice(1);
 		return oldPosts;
 	};
-	news.map((post: any) => {
-		post.date = dayjs(post.date).format("DD/MM/YYYY");
-	});
+
 	let oldPosts = news.slice(1);
 	return (
 		<section className="container mx-auto py-12 md:py-6 md:pt-0 text-center border-b">
@@ -184,6 +180,9 @@ export default function News({
 export const getStaticProps: GetStaticProps = async () => {
 	const postsNodes = await getNewsV2(4);
 	const posts = postsNodes.nodes;
+	posts.map((post: any) => {
+		post.date = dayjs(post.date).format("DD/MM/YYYY");
+	});
 	const pageInfo = postsNodes.pageInfo;
 
 	return {

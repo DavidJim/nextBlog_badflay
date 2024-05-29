@@ -8,21 +8,18 @@ import Link from "next/link";
 export default function post({ post }: { post: any }) {
 	return (
 		<section className="container mx-auto py-12 md:py-6 md:pt-0 text-center border-b">
-			<div className={`flex justify-center `}>
-				{/* <div
-					className={`h-[30rem] md:h-[50] w-full lg:w-5/6 xl:w-3/4 bg-cover bg-${post.imagenNoticias.posicionImagen[0]}`}
-					style={{
-						backgroundImage: `url(${post?.featuredImage?.node?.sourceUrl})`,
-					}}
-				></div> */}
+			<div className={`flex justify-center items-center`}>
 				<div
-					className={`h-[20rem] md:h-[30rem] w-full lg:w-5/6 xl:w-3/4 relative flex justify-start items-${post.imagenNoticias.posicionImagen[0]}`}
+					className={`h-[20rem] md:h-[30rem] w-full lg:w-5/6 xl:w-3/4 relative flex justify-start`}
 				>
 					<Image
 						src={post?.featuredImage?.node?.sourceUrl}
 						fill={true}
 						alt={post?.title}
 						className={`object-cover`}
+						style={{
+							objectPosition: `${post.imagenNoticias.posicionImagen[0]}`,
+						}}
 					/>
 				</div>
 			</div>

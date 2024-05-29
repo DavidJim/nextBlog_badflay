@@ -159,9 +159,15 @@ export async function getNewsV2(first = 10, after = "") {
 	return data?.posts;
 }
 
-export async function getEventos(first = 3, afterDate = {}, fechaLimite = "") {
-	const query = `query FetchEventos($first: Int = 10, $afterDate: DateInput!) {
-    eventos(first: $first, where: {dateQuery: {after: $afterDate}}) {
+export async function getEventos(
+	first = 3,
+	after = "",
+	afterDate = {},
+	fechaLimite = "",
+	before = false
+) {
+	const query = `query FetchEventos($first: Int = 10, $after: String, $afterDate: DateInput!) {
+    eventos(first: $first, after: $after, where: {dateQuery: {after: $afterDate}}) {
       nodes {
         detalles {
           categorias
@@ -211,19 +217,25 @@ export async function getEventos(first = 3, afterDate = {}, fechaLimite = "") {
         slug
         title
       }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
     }
   }`;
 
 	const data = await fetchAPI(query, {
 		variables: {
 			first,
+			after,
 			afterDate,
 		},
 	});
 
 	const eventosFiltrados = filtrarEventosPorFecha(
-		data.eventos.nodes,
-		fechaLimite
+		data.eventos,
+		fechaLimite,
+		before
 	);
 
 	return eventosFiltrados;
@@ -302,20 +314,27 @@ export async function getEventoBySlug(slug: string) {
 	data.evento.detalles.streamlinks = Object.values(
 		data.evento.detalles.streamlinks
 	);
-	console.log("LINKS", data?.evento.detalles.streamlinks);
 	return data?.evento;
 }
 
-function filtrarEventosPorFecha(eventos: any, fechaLimite: string) {
+function filtrarEventosPorFecha(
+	eventos: any,
+	fechaLimite: string,
+	before: boolean
+) {
 	// Convertir la fecha límite a un objeto dayjs
 	const fechaLimiteDate = dayjs(fechaLimite);
 
 	// Filtrar los eventos
-	return eventos.filter((evento: any) => {
+	return eventos.nodes.filter((evento: any) => {
 		// Obtener la fecha del campo 'detalles.fecha'
 		const fechaEvento = dayjs(evento.detalles.fecha);
+		evento.endCursor = eventos.pageInfo?.endCursor || null;
+		evento.hasNextPage = eventos.pageInfo?.hasNextPage;
 
 		// Comparar las fechas
-		return fechaEvento.isAfter(fechaLimiteDate);
+		return before
+			? fechaEvento.isBefore(fechaLimiteDate)
+			: fechaEvento.isAfter(fechaLimiteDate);
 	});
 }

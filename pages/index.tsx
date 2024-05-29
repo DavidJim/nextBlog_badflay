@@ -5,6 +5,7 @@ import { News } from "@/components/News";
 import { GetStaticProps } from "next";
 import { getEventos, getNews, getNewsV2 } from "@/lib/service";
 import dayjs from "dayjs";
+import { useState } from "react";
 
 export default function HomePage({
 	posts,
@@ -39,7 +40,10 @@ export const getStaticProps: GetStaticProps = async () => {
 	const fechaFiltro = fechaActual.subtract(4, "day").format("YYYY-MM-DD");
 
 	const postsNodes = await getNewsV2(4);
-	const eventos = await getEventos(3, fechaObjeto, fechaFiltro);
+	let eventos = await getEventos(3, "", fechaObjeto, fechaFiltro);
+	if (eventos.length === 0) {
+		eventos = await getEventos(3, "", fechaObjeto, fechaFiltro, true);
+	}
 	const posts = postsNodes.nodes;
 
 	return {

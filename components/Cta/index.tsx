@@ -1,15 +1,36 @@
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { GetStaticProps } from "next";
-import { getEventos } from "@/lib/service";
+import { useEffect, useState } from "react";
+
 import dayjs from "dayjs";
-import luciaFond from "../../public/images/luciafondo.jpg";
 
 const CountdownTimer = dynamic(() => import("../Utils/Timer"), {
 	ssr: false,
 });
 
+const imageList = [
+	"/images/eventosDefault/eventos_choque.jpg",
+	"/images/eventosDefault/eventos_choques.jpg",
+	"/images/eventosDefault/eventos_dobles.jpg",
+	"/images/eventosDefault/eventos_iker.jpg",
+	"/images/eventosDefault/eventos_lucia.jpg",
+	"/images/eventosDefault/eventos_mister.jpg",
+	"/images/eventosDefault/eventos_partidos.jpg",
+];
+
+const getRandomImages = (list: Array<string>, count: number) => {
+	const shuffled = [...list].sort(() => 0.5 - Math.random());
+	return shuffled.slice(0, count);
+};
+
 export const Cta = ({ eventos }: { eventos: any }) => {
+	const [images, setImages] = useState<Array<string>>([]);
+
+	useEffect(() => {
+		const selectedImages = getRandomImages(imageList, 3);
+		setImages(selectedImages);
+	}, []);
+
 	const compararPorFecha = (a: any, b: any) => {
 		const fechaA = new Date(a.detalles.fecha);
 		const fechaB = new Date(b.detalles.fecha);
@@ -21,28 +42,34 @@ export const Cta = ({ eventos }: { eventos: any }) => {
 		evento.detalles.fechaFormato = dayjs(evento.detalles.fecha).format(
 			"DD-MM-YYYY"
 		);
-		if (dayjs() > dayjs(evento.detalles.fecha)) evento.detalles.isLive = true;
+		if (
+			dayjs() > dayjs(evento.detalles.fecha) &&
+			dayjs() < dayjs(evento.detalles.fecha).add(3, "day")
+		)
+			evento.detalles.isLive = true;
 	});
 
 	return (
 		<section
 			className="relative mx-auto bg-cover bg-center flex justify-center pt-6"
-			style={{ backgroundImage: `url('/images/fondo_cta2.jpg')` }}
+			style={{ backgroundImage: `url('/images/home/home_fondo_cta.jpg')` }}
 		>
 			<div className="container mx-auto text-left text-white">
 				<div className="flex flex-col items-center md:items-start md:justify-start">
 					<h1 className="font-anton relative md:ml-16 -skew-x-12 text-[2.5rem] md:text-[4rem] lg:text-[4.5rem] mb-6">
 						PRÓXIMOS EVENTOS
 					</h1>
+				</div>
+				<div className="flex flex-col items-center md:items-center md:justify-start">
 					<section className="my-6 mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
 						{/* Inicio Card */}
-						{postsOrdered.map((evento: any) => {
+						{postsOrdered.map((evento: any, i: number) => {
 							return (
 								<div
 									key={postsOrdered.slug}
 									className="relative w-full h-64 bg-cover bg-top group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition duration-300 ease-in-out"
 									style={{
-										backgroundImage: `url('/images/GusFondo.jpg')`,
+										backgroundImage: `url(${images[i]})`,
 									}}
 								>
 									<Link href={`/competicion/${evento.slug}`}>

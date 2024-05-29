@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
-import Badflay from "../../public/images/Badflay.jpeg";
+import Badflay from "../../public/images/club/club_equipo.jpeg";
 
 export default function Club({ posts }: { posts: any }) {
 	const [selectedButton, setSelectedButton] = useState<String>("elClub");
