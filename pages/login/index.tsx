@@ -1,10 +1,12 @@
 import Image from "next/image";
 import shuttle from "../../public/images/shuttle.jpg";
+import escudo from "../../public/images/escudo_blanco.png";
+import logo from "../../public/images/logo_blanco.png";
 
 export default function Custom404() {
 	return (
 		<div className="justify-center">
-			<div className="w-full h-full flex justify-center items-center pt-12">
+			{/* <div className="w-full h-full flex justify-center items-center pt-12">
 				<Image
 					src={shuttle}
 					className="object-cover rounded-lg"
@@ -12,12 +14,51 @@ export default function Custom404() {
 					height={500}
 					width={500}
 				/>
-			</div>
-			<div className="relative flex justify-center items-center pt-4 pb-24 px-8">
-				<div className="rounded-xl flex-shrink">
-					<h1 className="font-anton text-black text-[1.5rem] md:text-[2.5rem] mx-8">
-						Página en construcción
-					</h1>
+			</div> */}
+			<div
+				className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat"
+				style={{ backgroundImage: "url('/images/home/home_fondo_cta.jpg')" }}
+			>
+				<div className="md:hidden relative pb-10 pt-10">
+					<Image
+						src={logo}
+						className="object-cover"
+						alt="logo"
+						height={200}
+						width={200}
+					/>
+				</div>
+				<div>
+					<div className="font-anton text-[3.5rem] sm:text-[4.75rem] md:text-[8rem] lg:text-[12rem] text-white -skew-x-12 opacity-90">
+						MUY PRONTO
+					</div>
+				</div>
+				<div className="flex flex-row justify-center items-center max-w-48">
+					<div className="flex relative md:pb-0">
+						<Image
+							src={escudo}
+							className="object-cover"
+							alt="escudo"
+							height={250}
+							width={250}
+						/>
+					</div>
+					<div className="hidden md:flex relative">
+						<Image
+							src={logo}
+							className="object-cover"
+							alt="logo"
+							height={250}
+							width={250}
+						/>
+					</div>
+				</div>
+				<div className="relative flex justify-center items-center pt-4 pb-24 px-8">
+					<div className="rounded-xl flex-shrink">
+						<h1 className="font-anton text-white text-[1.2rem] md:text-[2.5rem] mx-8">
+							Página en construcción
+						</h1>
+					</div>
 				</div>
 			</div>
 		</div>

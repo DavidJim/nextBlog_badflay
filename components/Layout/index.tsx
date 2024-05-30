@@ -1,14 +1,18 @@
 import { ReactNode } from "react";
 import { Nav } from "../Nav";
 import { Footer } from "../Footer";
-import { useState } from "react";
 import Image from "next/image";
 import escudo from "../../public/images/escudo_blanco.png";
 import logo from "../../public/images/logo_blanco.png";
 
-export const AppLayout = ({ children }: { children: ReactNode }) => {
-	const [open, setOpen] = useState<boolean>(true);
-	return open ? (
+export const AppLayout = ({
+	children,
+	isOpen,
+}: {
+	children: ReactNode;
+	isOpen: boolean;
+}) => {
+	return isOpen ? (
 		<main>
 			<Nav />
 			<>{children}</>
@@ -19,28 +23,37 @@ export const AppLayout = ({ children }: { children: ReactNode }) => {
 			className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat"
 			style={{ backgroundImage: "url('/images/home/home_fondo_cta.jpg')" }}
 		>
+			<div className="md:hidden relative pb-10 pt-10">
+				<Image
+					src={logo}
+					className="object-cover"
+					alt="logo"
+					height={200}
+					width={200}
+				/>
+			</div>
 			<div>
-				<div className="font-anton text-[4rem] md:text-[8rem] lg:text-[12rem] text-white -skew-x-12 opacity-90">
+				<div className="font-anton text-[3.5rem] sm:text-[4.75rem] md:text-[8rem] lg:text-[12rem] text-white -skew-x-12 opacity-90">
 					MUY PRONTO
 				</div>
 			</div>
 			<div className="flex flex-row justify-center items-center max-w-48">
-				<div className="flex relative">
+				<div className="flex relative pb-10 md:pb-0">
 					<Image
 						src={escudo}
 						className="object-cover"
 						alt="escudo"
-						height={300}
-						width={300}
+						height={250}
+						width={250}
 					/>
 				</div>
-				<div className="flex relative">
+				<div className="hidden md:flex relative">
 					<Image
 						src={logo}
 						className="object-cover"
 						alt="logo"
-						height={300}
-						width={300}
+						height={250}
+						width={250}
 					/>
 				</div>
 			</div>

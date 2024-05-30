@@ -4,9 +4,10 @@ import type { AppProps } from "next/app";
 import { AppLayout } from "@/components/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <AppLayout>
-      <Component {...pageProps} />
-    </AppLayout>
-  );
+	const isOpen = process.env.NEXT_PUBLIC_IS_OPEN === "true";
+	return (
+		<AppLayout isOpen={isOpen}>
+			<Component {...pageProps} />
+		</AppLayout>
+	);
 }
