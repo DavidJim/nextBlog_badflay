@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import EquipoHome from "../../public/images/home/home_equipo-min.png";
+import EscudoHome from "../../public/images/home/home_escudo.png";
 import MobileHome from "../../public/images/home/home_movil_mock.png";
 
 export const Hero = () => {
@@ -11,7 +12,7 @@ export const Hero = () => {
 					<div className="hidden md:left-20 md:top-2 md:flex md:ml-12 md:h-48 md:w-48 md:rounded-full">
 						<Image
 							className="z-10 object-contain"
-							src="https://i.ibb.co/WxTBGvc/badflay-removebg-preview.png"
+							src={EscudoHome}
 							alt="Logo"
 							width={500}
 							height={500}
