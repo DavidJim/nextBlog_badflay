@@ -54,7 +54,6 @@ export default function Competicion({ eventos }: { eventos: any }) {
 			fechaFiltro,
 			true
 		);
-		console.log(eventosAnteriores);
 		const totalEventos = [...events, ...eventosAnteriores];
 		setEvents(orderPosts(totalEventos, false));
 	};

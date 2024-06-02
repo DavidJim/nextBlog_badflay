@@ -280,7 +280,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	};
 	const fechaFiltro = dayjs().subtract(1, "year").format("YYYY-MM-DD");
 	const eventos = await getEventos(100, "", fechaObjeto, fechaFiltro);
-	console.log("EVENTOS PATH", eventos[0].detalles.participantes.length);
 	return {
 		paths: eventos.map((evento: any) => `/competicion/${evento.slug}`),
 		fallback: false,

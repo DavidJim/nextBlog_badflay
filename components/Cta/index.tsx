@@ -1,16 +1,23 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import eventos_choques from "../../public/images/eventosDefault/eventos_choques.jpg";
+import eventos_choque from "../../public/images/eventosDefault/eventos_choque.jpg";
+import eventos_dobles from "../../public/images/eventosDefault/eventos_dobles.jpg";
+import eventos_iker from "../../public/images/eventosDefault/eventos_iker.jpg";
+import eventos_lucia from "../../public/images/eventosDefault/eventos_lucia.jpg";
+import eventos_mister from "../../public/images/eventosDefault/eventos_mister.jpg";
+import eventos_partidos from "../../public/images/eventosDefault/eventos_partidos.jpg";
 
 import dayjs from "dayjs";
 
 const imageList = [
-	"/images/eventosDefault/eventos_choque.jpg",
-	"/images/eventosDefault/eventos_choques.jpg",
-	"/images/eventosDefault/eventos_dobles.jpg",
-	"/images/eventosDefault/eventos_iker.jpg",
-	"/images/eventosDefault/eventos_lucia.jpg",
-	"/images/eventosDefault/eventos_mister.jpg",
-	"/images/eventosDefault/eventos_partidos.jpg",
+	eventos_choques.src,
+	eventos_choque.src,
+	eventos_dobles.src,
+	eventos_iker.src,
+	eventos_lucia.src,
+	eventos_mister.src,
+	eventos_partidos.src,
 ];
 
 const getRandomImages = (list: Array<string>, count: number) => {
@@ -19,7 +26,11 @@ const getRandomImages = (list: Array<string>, count: number) => {
 };
 
 export const Cta = ({ eventos }: { eventos: any }) => {
-	const [images, setImages] = useState<Array<string>>([]);
+	const [images, setImages] = useState<Array<string>>([
+		eventos_choques.src,
+		eventos_choque.src,
+		eventos_dobles.src,
+	]);
 
 	useEffect(() => {
 		const selectedImages = getRandomImages(imageList, 3);
