@@ -37,7 +37,7 @@ export const AppLayout = ({
 					MUY PRONTO
 				</div>
 			</div>
-			<div className="flex flex-row justify-center items-center max-w-48">
+			<div className="flex flex-row justify-center items-center">
 				<div className="flex relative pb-10 md:pb-0">
 					<Image
 						src={escudo}
