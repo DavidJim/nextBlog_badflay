@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { GetStaticProps } from "next";
+import { GetStaticProps, GetServerSideProps } from "next";
 import { getNewsV2 } from "@/lib/service";
 import defaultImage from "@/assets/images/defaultBad.jpg";
 import dayjs from "dayjs";
@@ -177,7 +177,7 @@ export default function News({
 	);
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const postsNodes = await getNewsV2(4);
 	const posts = postsNodes.nodes;
 	posts.map((post: any) => {
@@ -190,6 +190,5 @@ export const getStaticProps: GetStaticProps = async () => {
 			posts,
 			pageInfo,
 		},
-		revalidate: 3600,
 	};
 };

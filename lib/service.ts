@@ -171,6 +171,7 @@ export async function getEventos(
       nodes {
         detalles {
           categorias
+          participantes
           streamlinks {
             link1 {
               url
@@ -248,6 +249,7 @@ export async function getEventoBySlug(slug: string) {
       detalles {
           direccion
           categorias
+          participantes
           streamlinks {
           link1 {
             url

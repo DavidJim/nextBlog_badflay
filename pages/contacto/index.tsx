@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import EquipoHome from "../../public/images/Logo.png";
+import EquipoHome from "../../public/images/contacto_club.jpg";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { z } from "zod";
@@ -111,11 +111,15 @@ export default function Contacto({ posts }: { posts: any }) {
 				</div>
 			</div>
 			<div className="relative grid grid-cols-12 justify-center mx-4">
-				<div className="w-full scale-50 col-span-12 lg:block lg:col-span-6 lg:scale-75 xl:scale-50 justify-center pr-2">
-					<Image className="z-10" src={EquipoHome} alt="Logo" />
+				<div className="relative w-full col-span-12 lg:block lg:col-span-6 lg:scale-90 xl:scale-90 justify-center pt-6 pb-12 lg:pb-0 lg:pt-0">
+					<Image
+						className="z-10 rounded-lg shadow-lg"
+						src={EquipoHome}
+						alt="Logo"
+					/>
 				</div>
 				<form
-					className="w-full col-span-12 lg:col-span-6 lg:max-w-[40rem] justify-self"
+					className="relative w-full col-span-12 lg:col-span-6 lg:max-w-[40rem] justify-self"
 					onSubmit={onSubmit}
 				>
 					<div className="flex flex-wrap -mx-3 mb-6">

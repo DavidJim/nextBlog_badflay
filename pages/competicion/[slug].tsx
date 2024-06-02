@@ -219,7 +219,9 @@ export default function CompeticionDetalle({ evento }: { evento: any }) {
 											Sorteos y cuadros:
 										</h3>
 										<p className="mb-2 text-purple-900">
-											<a href={evento?.detalles?.urlEvento}>Ver</a>
+											<a href={evento?.detalles?.urlEvento} target="_blank">
+												Ver
+											</a>
 										</p>
 									</div>
 								</div>
@@ -241,13 +243,16 @@ export default function CompeticionDetalle({ evento }: { evento: any }) {
 										<h3 className="text-lg font-semibold md:text-xl">
 											Participantes:
 										</h3>
-										{evento?.detalles?.categorias.map((category: any) => {
-											return (
-												<div key={category} className="mb-2">
-													{category}
-												</div>
-											);
-										})}
+										{evento?.detalles?.participantes.length > 0 &&
+											evento?.detalles?.participantes.map(
+												(participante: any) => {
+													return (
+														<div key={participante} className="mb-2">
+															{participante}
+														</div>
+													);
+												}
+											)}
 									</div>
 								</div>
 								{/* <!-- feature - end --> */}
@@ -275,7 +280,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	};
 	const fechaFiltro = dayjs().subtract(1, "year").format("YYYY-MM-DD");
 	const eventos = await getEventos(100, "", fechaObjeto, fechaFiltro);
-	console.log("EVENTOS PATH", eventos);
+	console.log("EVENTOS PATH", eventos[0].detalles.participantes.length);
 	return {
 		paths: eventos.map((evento: any) => `/competicion/${evento.slug}`),
 		fallback: false,
@@ -287,5 +292,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 	return {
 		props: { evento },
+		revalidate: 30,
 	};
 };

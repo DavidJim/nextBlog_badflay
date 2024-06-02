@@ -45,12 +45,16 @@ export default function post({ post }: { post: any }) {
 								);
 							})}
 						</div>
-						<div
-							className="text-base text-justify leading-8 my-5 py-5"
-							dangerouslySetInnerHTML={{
-								__html: styles.paragraphNew + post.content,
-							}}
-						></div>
+						{post.content ? (
+							<div
+								className="text-base text-justify leading-8 my-5 py-5"
+								dangerouslySetInnerHTML={{
+									__html: styles.paragraphNew + post.content,
+								}}
+							></div>
+						) : (
+							<div className="text-base text-justify leading-8 my-5 py-5"></div>
+						)}
 						<div className="flex justify-center items-center text-gray-600 mt-8 lg:mt-4">
 							{post.previous?.slug && (
 								<div className="relative flex justify-center items-center">
@@ -115,67 +119,6 @@ export default function post({ post }: { post: any }) {
 					</div>
 				</div>
 			</div>
-			{/* <div className="flex justify-center items-center text-gray-600 mt-8 lg:mt-4">
-				{post.previous?.slug && (
-					<div className="relative flex justify-center items-center">
-						<Link
-							key={post.next.slug}
-							href={`/noticias/${post.previous.slug}`}
-							className="px-2 ml-4 rounded hover:bg-gray-100"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="h-6 w-6"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M15 19l-7-7 7-7"
-								/>
-							</svg>
-						</Link>
-						<Link
-							href={`/noticias/${post.previous.slug}`}
-							className="px-4 py-2 rounded hover:bg-gray-100 text-[1rem] md:text-md text-purple-700"
-						>
-							Ver noticia anterior
-						</Link>
-					</div>
-				)}
-				{post.next?.slug && (
-					<div className="relative flex justify-center items-center">
-						<Link
-							href={`/noticias/${post.next.slug}`}
-							className="px-4 py-2 rounded hover:bg-gray-100 text-[1rem] md:text-md text-purple-700"
-						>
-							Siguiente noticia
-						</Link>
-						<Link
-							href={`/noticias/${post.next.slug}`}
-							className="p-2 mr-4 rounded hover:bg-gray-100"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								className="h-6 w-6"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M9 5l7 7-7 7"
-								/>
-							</svg>
-						</Link>
-					</div>
-				)}
-			</div> */}
 			{/* Hacer sección de imágenes en caso de que el post las traiga, con un divisor como el de sección */}
 		</section>
 	);
@@ -195,5 +138,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 	return {
 		props: { post },
+		revalidate: 30,
 	};
 };

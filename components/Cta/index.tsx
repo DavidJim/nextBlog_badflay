@@ -1,12 +1,7 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
 import dayjs from "dayjs";
-
-const CountdownTimer = dynamic(() => import("../Utils/Timer"), {
-	ssr: false,
-});
 
 const imageList = [
 	"/images/eventosDefault/eventos_choque.jpg",
@@ -60,13 +55,13 @@ export const Cta = ({ eventos }: { eventos: any }) => {
 						PRÓXIMOS EVENTOS
 					</h1>
 				</div>
-				<div className="flex flex-col items-center md:items-center md:justify-start">
+				<div className="flex flex-col md:justify-start">
 					<section className="my-6 mx-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
 						{/* Inicio Card */}
 						{postsOrdered.map((evento: any, i: number) => {
 							return (
 								<div
-									key={postsOrdered.slug}
+									key={evento.slug}
 									className="relative w-full h-64 bg-cover bg-top group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:scale-105 transition duration-300 ease-in-out"
 									style={{
 										backgroundImage: `url(${images[i]})`,

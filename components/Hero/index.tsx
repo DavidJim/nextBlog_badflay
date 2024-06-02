@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import EquipoHome from "../../public/images/home/home_equipo_principal.png";
+import EquipoHome from "../../public/images/home/home_equipo-min.png";
 import MobileHome from "../../public/images/home/home_movil_mock.png";
 
 export const Hero = () => {

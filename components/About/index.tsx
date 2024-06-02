@@ -5,7 +5,7 @@ export const About = () => {
 		<section
 			id="club"
 			className="bg-cover bg-center h-screen flex justify-center items-center md:pt-6"
-			style={{ backgroundImage: `url('/images/home/home_fondo_club.png')` }}
+			style={{ backgroundImage: `url('/images/home/home_fondo_club_min.png')` }}
 		>
 			<div className="container md:mx-auto text-white">
 				<div className="flex items-center justify-center md:justify-start">

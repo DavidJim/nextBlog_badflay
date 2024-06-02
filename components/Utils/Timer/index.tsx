@@ -69,9 +69,14 @@ const CountdownTimer: React.FC<Props> = ({ targetDate, endDate = null }) => {
 		return num < 10 ? `0${num}` : num.toString();
 	};
 
-	const formattedTime = `${timeLeft.days} Días ${formatTime(
-		timeLeft.hours
-	)}:${formatTime(timeLeft.minutes)}:${formatTime(timeLeft.seconds)}`;
+	const formattedTime =
+		timeLeft.days > 0
+			? `${timeLeft.days} Días ${formatTime(timeLeft.hours)}:${formatTime(
+					timeLeft.minutes
+			  )}:${formatTime(timeLeft.seconds)}`
+			: `${formatTime(timeLeft.hours)}:${formatTime(
+					timeLeft.minutes
+			  )}:${formatTime(timeLeft.seconds)}`;
 
 	return (
 		<div className="justify-center items-center">

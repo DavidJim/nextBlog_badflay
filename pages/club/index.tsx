@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
 import Badflay from "../../public/images/club/club_equipo.jpeg";
+import BadflayClub from "../../public/images/club/club_equipo_min.jpg";
 
 export default function Club({ posts }: { posts: any }) {
 	const [selectedButton, setSelectedButton] = useState<String>("elClub");
@@ -117,7 +118,7 @@ export default function Club({ posts }: { posts: any }) {
 				>
 					<Image
 						className="rounded-lg"
-						src={activeTab === 1 ? Badflay : Badflay}
+						src={activeTab === 1 ? BadflayClub : Badflay}
 						alt="club"
 					/>
 				</div>
@@ -200,7 +201,11 @@ export default function Club({ posts }: { posts: any }) {
 				</div>
 			)}
 			<div className="flex justify-center">
-				<div className="flex justify-center items-center">
+				<div
+					className={`flex justify-center items-center ${
+						activeTab === 1 && "pt-12"
+					}`}
+				>
 					<Link href="/contacto">
 						<button className="mb-6 px-8 items-center rounded-full bg-purple-800 py-3 text-center text-base text-white hover:scale-105 hover:opacity-80 transition duration-200">
 							Escríbenos

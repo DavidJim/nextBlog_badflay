@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { IoOpenOutline } from "react-icons/io5";
-import next, { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import { getEventos } from "@/lib/service";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
@@ -233,7 +233,9 @@ export default function Competicion({ eventos }: { eventos: any }) {
 				<div className="relative flex justify-center items-center pt-4 pb-8 px-8">
 					<div className="rounded-xl flex-shrink">
 						<h1 className="font-anton text-black text-[2rem] md:text-[2.5rem] mx-8">
-							NO HAY PRÓXIMOS EVENTOS PROGRAMADOS
+							{oldEvents
+								? "NO HAY EVENTOS PASADOS"
+								: "NO HAY PRÓXIMOS EVENTOS PROGRAMADOS"}
 						</h1>
 					</div>
 				</div>
@@ -264,7 +266,7 @@ export default function Competicion({ eventos }: { eventos: any }) {
 	);
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	// Crear un objeto con el año actual y los valores deseados para el mes y el día
 	const fechaObjeto = {
 		year: dayjs().year(),
@@ -278,6 +280,5 @@ export const getStaticProps: GetStaticProps = async () => {
 		props: {
 			eventos,
 		},
-		revalidate: 3600,
 	};
 };

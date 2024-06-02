@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import { FaUser, FaBars, FaTimes, FaHome } from "react-icons/fa";
+import logo from "../../public/images/Logo.png";
 
 export const Nav = () => {
 	const [hovered, setHovered] = useState(false);
@@ -60,7 +61,7 @@ export const Nav = () => {
 							</Link>
 							<Link href="/">
 								<Image
-									src="/images/logo.png"
+									src={logo}
 									alt="Picture of the author"
 									height={180}
 									width={180}
@@ -98,58 +99,6 @@ export const Nav = () => {
 					</div>
 				</div>
 			</div>
-			{/* <div className="md:hidden navbar fixed w-full mx-auto bg-white z-[10] py-4">
-				<div className="flex items-center justify-between p-4 text-base text-purple-900">
-					<Image
-						src="/images/logo.png"
-						alt="Picture of the author"
-						height={120}
-						width={120}
-						className=""
-					></Image>
-					<button
-						onClick={toggleOpened}
-						className={`transition duration-200 ease-in-out transform hover:scale-110 z-[1] ${
-							rotated ? "rotate-90" : ""
-						}`}
-					>
-						{opened ? <FaTimes size={24} /> : <FaBars size={24} />}
-					</button>
-				</div>
-				{opened && (
-					<div
-						ref={ref}
-						className={`bg-white w-full left-0 p-4 text-base z-[0] transition-transform duration-300 transform
-						translate-y-0
-					`}
-						style={{ transitionProperty: "transform, opacity" }}
-					>
-						<div className="flex flex-col items-center py-2 text-xl">
-							<Link href="/" className="py-4">
-								Inicio
-							</Link>
-							<Link href="#" className="py-4">
-								Noticias
-							</Link>
-							<Link href="#" className="py-4">
-								El Club
-							</Link>
-							<Link href="#" className="py-4">
-								Contacto
-							</Link>
-							<div className="py-4 text-xl">
-								<button
-									type="button"
-									className="relative flex items-center justify-center border-2 border-x-2 text-purple-900 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white w-32"
-								>
-									<FaUser className="m-3" />
-									<span className="mr-2">Login</span>
-								</button>
-							</div>
-						</div>
-					</div>
-				)}
-			</div> */}
 			<div
 				className={`md:hidden fixed w-screen z-50 overflow-y-hidden flex-col flex ${
 					opened && "h-full bg-black/50 backdrop-blur-sm top-0 right-0"
@@ -158,7 +107,7 @@ export const Nav = () => {
 				<div className="flex items-center justify-between p-4 text-base bg-white text-purple-900 z-50 overflow-y-hidden">
 					<Link href="/">
 						<Image
-							src="/images/logo.png"
+							src={logo}
 							alt="Picture of the author"
 							height={120}
 							width={120}
