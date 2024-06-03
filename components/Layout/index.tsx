@@ -43,8 +43,8 @@ export const AppLayout = ({
 						src={escudo}
 						className="object-cover"
 						alt="escudo"
-						height={250}
-						width={250}
+						height={200}
+						width={200}
 					/>
 				</div>
 				<div className="hidden md:flex relative">
