@@ -4,6 +4,8 @@ import { Footer } from "../Footer";
 import Image from "next/image";
 import escudo from "../../public/images/escudo_blanco.png";
 import logo from "../../public/images/logo_blanco.png";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import CookieBanner from "@/components/CookieBanner";
 
 export const AppLayout = ({
 	children,
@@ -15,7 +17,9 @@ export const AppLayout = ({
 	return isOpen ? (
 		<main>
 			<Nav />
+			<GoogleAnalytics GA_MEASUREMENT_ID="G-YQMSQ5M2FD" />
 			<>{children}</>
+			<CookieBanner />
 			<Footer />
 		</main>
 	) : (

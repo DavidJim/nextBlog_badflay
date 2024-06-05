@@ -4,7 +4,15 @@ export async function fetchAPI(
 	query = "",
 	{ variables }: Record<string, any> = {}
 ) {
-	const headers = { "Content-Type": "application/json" };
+	let headers: any = {
+		"Content-Type": "application/json",
+	};
+
+	if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
+		headers[
+			"Authorization"
+		] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
+	}
 
 	try {
 		const res = await fetch(API_URL, {
@@ -21,7 +29,6 @@ export async function fetchAPI(
 
 		if (json.errors) {
 			console.error(json.errors);
-			console.log("ERROR");
 			throw new Error("Failed to fetch API");
 		}
 
