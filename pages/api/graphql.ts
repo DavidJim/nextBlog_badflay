@@ -1,7 +1,7 @@
 // pages/api/graphql.js
 
 import type { NextApiRequest, NextApiResponse } from "next";
-
+import fetch from "node-fetch";
 const API_URL = <string>process.env.WORDPRESS_API_ENDPOINT;
 const REFRESH_TOKEN = <string>process.env.WORDPRESS_AUTH_REFRESH_TOKEN;
 
@@ -36,7 +36,7 @@ export default async function handler(
 			referrerPolicy: "unsafe-url",
 		});
 
-		const json = await response.json();
+		const json: any = await response.json();
 		if (json.errors) {
 			console.error(json.errors);
 			res.status(500).json({ errors: json.errors });
