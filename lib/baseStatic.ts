@@ -1,6 +1,6 @@
 const API_URL = <string>process.env.WORDPRESS_API_ENDPOINT;
 const REFRESH_TOKEN = <string>process.env.WORDPRESS_AUTH_REFRESH_TOKEN;
-
+import fetch from "node-fetch";
 export async function fetchAPI(
 	query = "",
 	{ variables }: Record<string, any> = {}
@@ -24,7 +24,7 @@ export async function fetchAPI(
 			referrerPolicy: "unsafe-url",
 		});
 
-		const json = await res.json();
+		const json: any = await res.json();
 		if (json.errors) {
 			console.error(json.errors);
 			throw new Error("Failed to fetch API");
