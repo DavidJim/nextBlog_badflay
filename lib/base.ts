@@ -1,39 +1,20 @@
-const API_URL = <string>process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT;
-const REFRESH_TOKEN = <string>(
-	process.env.NEXT_PUBLIC_WORDPRESS_AUTH_REFRESH_TOKEN
-);
-
-export async function fetchAPI(
+export const fetchAPI = async (
 	query = "",
 	{ variables }: Record<string, any> = {}
-) {
-	let headers: any = {
-		"Content-Type": "application/json",
-	};
+) => {
+	const response = await fetch(process.env.NEXT_PUBLIC_URL + "/api/graphql", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ query, variables }),
+	});
 
-	if (REFRESH_TOKEN) {
-		headers["Authorization"] = `Bearer ${REFRESH_TOKEN}`;
+	const data = await response.json();
+
+	if (response.ok) {
+		return data;
+	} else {
+		throw new Error(data.error || "Error fetching data");
 	}
-
-	try {
-		const res = await fetch(API_URL, {
-			headers,
-			method: "POST",
-			body: JSON.stringify({
-				query,
-				variables,
-			}),
-			referrerPolicy: "unsafe-url",
-		});
-
-		const json = await res.json();
-		if (json.errors) {
-			console.error(json.errors);
-			throw new Error("Failed to fetch API");
-		}
-
-		return json.data;
-	} catch (err) {
-		console.log("ERROR---- ", err);
-	}
-}
+};
