@@ -1,6 +1,6 @@
 import { About } from "@/components/About";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
-import { getNews, getPostBySlug } from "@/lib/service";
+import { getNews, getPostBySlug } from "@/lib/serviceStatic";
 import { styles } from "../../components/Utils/styles_innerHtml";
 import Image from "next/image";
 import Link from "next/link";

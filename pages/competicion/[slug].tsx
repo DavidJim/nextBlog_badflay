@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Badflay from "../../public/images/Badflay.jpeg";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { getEventoBySlug, getEventos } from "@/lib/service";
+import { getEventoBySlug, getEventos } from "@/lib/serviceStatic";
 import dayjs from "dayjs";
 
 export default function CompeticionDetalle({ evento }: { evento: any }) {
