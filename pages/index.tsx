@@ -3,7 +3,7 @@ import { Cta } from "@/components/Cta";
 import { About } from "@/components/About";
 import { News } from "@/components/News";
 import { GetStaticProps } from "next";
-import { getEventos, getNews, getNewsV2 } from "@/lib/service";
+import { getEventos, getNews, getNewsV2 } from "@/lib/serviceStatic";
 import dayjs from "dayjs";
 import { useState } from "react";
 
