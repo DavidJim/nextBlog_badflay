@@ -1,4 +1,7 @@
 const API_URL = <string>process.env.NEXT_PUBLIC_WORDPRESS_API_ENDPOINT;
+const REFRESH_TOKEN = <string>(
+	process.env.NEXT_PUBLIC_WORDPRESS_AUTH_REFRESH_TOKEN
+);
 
 export async function fetchAPI(
 	query = "",
@@ -8,10 +11,8 @@ export async function fetchAPI(
 		"Content-Type": "application/json",
 	};
 
-	if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
-		headers[
-			"Authorization"
-		] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
+	if (REFRESH_TOKEN) {
+		headers["Authorization"] = `Bearer ${REFRESH_TOKEN}`;
 	}
 
 	try {
@@ -26,7 +27,6 @@ export async function fetchAPI(
 		});
 
 		const json = await res.json();
-
 		if (json.errors) {
 			console.error(json.errors);
 			throw new Error("Failed to fetch API");
