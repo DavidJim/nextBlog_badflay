@@ -129,7 +129,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 	return {
 		paths: posts.map((post: any) => `/noticias/${post.slug}`),
-		fallback: true,
+		fallback: "blocking",
 	};
 };
 
