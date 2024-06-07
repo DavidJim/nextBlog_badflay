@@ -266,6 +266,7 @@ export default function Competicion({ eventos }: { eventos: any }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
+	console.log("Vamo a consultar");
 	// Crear un objeto con el año actual y los valores deseados para el mes y el día
 	const fechaObjeto = {
 		year: dayjs().year(),

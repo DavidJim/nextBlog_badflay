@@ -25,6 +25,7 @@ export default function HomePage({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+	console.log("Actualizar búsqueda");
 	// Obtener la fecha actual usando dayjs
 	const fechaActual = dayjs();
 
