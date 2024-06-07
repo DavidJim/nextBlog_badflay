@@ -71,9 +71,9 @@ export default function post({ post }: { post: any }) {
 											stroke="purple"
 										>
 											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth="2"
 												d="M15 19l-7-7 7-7"
 											/>
 										</svg>
@@ -106,9 +106,9 @@ export default function post({ post }: { post: any }) {
 											stroke="purple"
 										>
 											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												stroke-width="2"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth="2"
 												d="M9 5l7 7-7 7"
 											/>
 										</svg>
@@ -129,7 +129,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 	return {
 		paths: posts.map((post: any) => `/noticias/${post.slug}`),
-		fallback: false,
+		fallback: true,
 	};
 };
 
