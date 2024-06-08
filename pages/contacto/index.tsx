@@ -51,11 +51,12 @@ export default function Contacto({ posts }: { posts: any }) {
 					errArr.push({ for: err[i].path[0], message: err[i].message });
 				}
 				setErrors(errArr);
+				setIsLoading(false);
 				throw err;
 			}
 
 			try {
-				emailjs
+				await emailjs
 					.send(
 						"service_4mzviaj",
 						"template_1dq4d2r",
@@ -77,6 +78,7 @@ export default function Contacto({ posts }: { posts: any }) {
 						}
 					);
 			} catch (err) {
+				setIsLoading(false);
 				setErrorPopup(true);
 			}
 			setNombre("");
@@ -84,6 +86,7 @@ export default function Contacto({ posts }: { posts: any }) {
 			setEmail("");
 			setMensaje("");
 			setErrors([]);
+			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -197,7 +200,7 @@ export default function Contacto({ posts }: { posts: any }) {
 								type="submit"
 								className="mb-6 px-8 items-center rounded-full bg-purple-800 py-3 text-center text-base text-white hover:scale-105 hover:opacity-80 transition duration-200"
 							>
-								{isLoading ? "Guardando..." : "Enviar"}
+								{isLoading ? "Enviando..." : "Enviar"}
 							</button>
 						</div>
 					</div>

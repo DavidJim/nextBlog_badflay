@@ -35,6 +35,7 @@ const orderPosts = (eventos: any, sort: boolean = true) => {
 export default function Competicion({ eventos }: { eventos: any }) {
 	const [oldEvents, setOldEvents] = useState<boolean>(false);
 	const [events, setEvents] = useState<any>([]);
+	const [loading, setIsLoading] = useState<boolean>(false);
 
 	useEffect(() => {
 		setEvents(orderPosts(eventos));
@@ -59,11 +60,12 @@ export default function Competicion({ eventos }: { eventos: any }) {
 	};
 
 	const handleEventsType = async () => {
+		setIsLoading(true);
 		if (oldEvents) {
 			setOldEvents(false);
 			setEvents(orderPosts(eventos));
+			setIsLoading(false);
 		} else {
-			setOldEvents(true);
 			let fechaObjeto = {
 				year: dayjs().year(),
 				month: 1,
@@ -77,7 +79,9 @@ export default function Competicion({ eventos }: { eventos: any }) {
 				fechaFiltro,
 				true
 			);
+			setOldEvents(true);
 			setEvents(orderPosts(eventosPasados, false));
+			setIsLoading(false);
 		}
 	};
 
@@ -251,16 +255,24 @@ export default function Competicion({ eventos }: { eventos: any }) {
 					</button>
 				</div>
 			)}
-			<div className="flex justify-center items-center pt-4">
-				<button
-					onClick={() => {
-						handleEventsType();
-					}}
-					className="mb-6 px-8 items-center rounded-full bg-purple-800 py-3 text-center text-base text-white hover:scale-105 hover:opacity-80 transition duration-200"
-				>
-					{oldEvents ? "Próximos Eventos" : "Eventos Pasados"}
-				</button>
-			</div>
+			{loading ? (
+				<div className="flex justify-center items-center pt-4">
+					<button className="mb-6 px-8 items-center rounded-full bg-purple-400 py-3 text-center text-base text-white hover:scale-105 hover:opacity-80 transition duration-200">
+						Cargando...
+					</button>
+				</div>
+			) : (
+				<div className="flex justify-center items-center pt-4">
+					<button
+						onClick={() => {
+							handleEventsType();
+						}}
+						className="mb-6 px-8 items-center rounded-full bg-purple-800 py-3 text-center text-base text-white hover:scale-105 hover:opacity-80 transition duration-200"
+					>
+						{oldEvents ? "Próximos Eventos" : "Eventos Pasados"}
+					</button>
+				</div>
+			)}
 		</section>
 	);
 }
