@@ -31,7 +31,7 @@ export default function CookieBanner() {
                          bg-white rounded-lg md:rounded-full shadow-xl z-50`}
 		>
 			<div className="text-center">
-				<Link href="/info/cookies">
+				<Link href="/privacidad">
 					<p>
 						Igual que utilizamos volantes para entrenar, hacen falta{" "}
 						<span className="font-bold text-green-800">cookies </span>

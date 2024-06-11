@@ -20,7 +20,7 @@ export default function CompeticionDetalle({ evento }: { evento: any }) {
 		<section className="container mx-auto py-12 md:py-6 md:pt-0 text-center border-b">
 			<div className="relative flex justify-center items-center pt-16 md:pt-8 pb-8 px-8">
 				<div className="bg-purple-900 rounded-xl flex-shrink -skew-x-12">
-					<h1 className="font-anton text-white text-[2rem] md:text-[2.5rem] mx-8">
+					<h1 className="font-anton text-white text-[1.25rem] md:text-[2.5rem] mx-8">
 						{evento?.detalles?.tituloEvento}
 					</h1>
 				</div>

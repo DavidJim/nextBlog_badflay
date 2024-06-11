@@ -46,7 +46,9 @@ export const Cta = ({
 	const compararPorFecha = (a: any, b: any) => {
 		const fechaA = new Date(a.detalles.fecha);
 		const fechaB = new Date(b.detalles.fecha);
-		return fechaA.getTime() - fechaB.getTime();
+		return oldEvents
+			? fechaB.getTime() - fechaA.getTime()
+			: fechaA.getTime() - fechaB.getTime();
 	};
 	const postsOrdered = eventos.sort(compararPorFecha);
 
