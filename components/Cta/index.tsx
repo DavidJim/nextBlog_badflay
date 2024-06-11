@@ -25,7 +25,13 @@ const getRandomImages = (list: Array<string>, count: number) => {
 	return shuffled.slice(0, count);
 };
 
-export const Cta = ({ eventos }: { eventos: any }) => {
+export const Cta = ({
+	eventos,
+	oldEvents,
+}: {
+	eventos: any;
+	oldEvents: any;
+}) => {
 	const [images, setImages] = useState<Array<string>>([
 		eventos_choques.src,
 		eventos_choque.src,
@@ -63,7 +69,7 @@ export const Cta = ({ eventos }: { eventos: any }) => {
 			<div className="container mx-auto text-left text-white">
 				<div className="flex flex-col items-center md:items-start md:justify-start">
 					<h1 className="font-anton relative md:ml-16 -skew-x-12 text-[2.5rem] md:text-[4rem] lg:text-[4.5rem] mb-6">
-						PRÓXIMOS EVENTOS
+						{oldEvents ? "ÚLTIMOS EVENTOS" : "PRÓXIMOS EVENTOS"}
 					</h1>
 				</div>
 				<div className="flex flex-col md:justify-start">

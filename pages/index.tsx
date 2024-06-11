@@ -10,14 +10,16 @@ import { useState } from "react";
 export default function HomePage({
 	posts,
 	eventos,
+	oldEvents,
 }: {
 	posts: any;
 	eventos: any;
+	oldEvents: any;
 }) {
 	return (
 		<>
 			<Hero />
-			<Cta eventos={eventos} />
+			<Cta eventos={eventos} oldEvents={oldEvents} />
 			<News posts={posts} />
 			<About />
 		</>
@@ -38,12 +40,14 @@ export const getStaticProps: GetStaticProps = async () => {
 		month: 1,
 		day: 1,
 	};
+	let oldEvents = false;
 	const fechaFiltro = fechaActual.subtract(4, "day").format("YYYY-MM-DD");
 
 	const postsNodes = await getNewsV2(4);
 	let eventos = await getEventos(3, "", fechaObjeto, fechaFiltro);
 	if (eventos.length === 0) {
 		eventos = await getEventos(3, "", fechaObjeto, fechaFiltro, true);
+		oldEvents = true;
 	}
 	const posts = postsNodes.nodes;
 
@@ -51,6 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		props: {
 			posts,
 			eventos,
+			oldEvents,
 		},
 		revalidate: 30,
 	};

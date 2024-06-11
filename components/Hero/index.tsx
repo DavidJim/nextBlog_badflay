@@ -46,7 +46,7 @@ export const Hero = () => {
 				<div className="relative items-center md:col-span-6 md:mt-0 md:flex md:mb-0 ">
 					<div className="absolute -z-10 right-0 -top-8 mr-8 md:mr-auto md:top-28 flex bg-purple-800 h-36 w-36 md:h-36 md:w-36 rounded-full lg:h-40 lg:w-40 lg:top-2 xl:top-0 xl:mr-8"></div>
 					<Image
-						className="flex sm:relative sm:pt-0 md:pt-12 md:absolute z-10 object-contain scale-[1.3] lg:pt-12 md:scale-[1.5]"
+						className="flex sm:relative sm:pt-0 md:pt-12 md:absolute z-10 object-contain scale-[1.3] lg:mt-12 lg:pt-0 md:scale-[1.5]"
 						src={EquipoHome}
 						alt="mockup"
 					/>
