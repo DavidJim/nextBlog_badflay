@@ -2,6 +2,7 @@ import { Hero } from "@/components/Hero";
 import { Cta } from "@/components/Cta";
 import { About } from "@/components/About";
 import { News } from "@/components/News";
+import { Results } from "@/components/Results";
 import { GetStaticProps } from "next";
 import { getEventos, getNews, getNewsV2 } from "@/lib/serviceStatic";
 import dayjs from "dayjs";
@@ -19,6 +20,7 @@ export default function HomePage({
 	return (
 		<>
 			<Hero />
+			<Results />
 			<Cta eventos={eventos} oldEvents={oldEvents} />
 			<News posts={posts} />
 			<About />

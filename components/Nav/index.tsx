@@ -7,6 +7,7 @@ import logo from "../../public/images/Logo.png";
 export const Nav = () => {
 	const [hovered, setHovered] = useState(false);
 	const [hoveredHome, setHoveredHome] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 	const [opened, setOpened] = useState(false);
 	const [rotated, setRotated] = useState(false);
 	const ref = useRef(null);
@@ -46,12 +47,44 @@ export const Nav = () => {
 						</Link>
 					</div>
 					<div className="flex items-center justify-center p-4 text-base lg:text-xl">
-						<div className="flex items-center">
+						<div className="relative flex items-center">
+							{/* <div className="relative flex items-center">
+								<button
+									className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
+									onClick={() => setIsOpen(!isOpen)}
+								>
+									El Club
+								</button>
+								{isOpen && (
+									<div className="absolute top-full mt-2 bg-purple-800 shadow-lg rounded-md z-50">
+										<ul className="flex flex-col">
+											<li>
+												<a
+													href="/club/historia"
+													className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-purple-800 hover:rounded-t-md"
+													onClick={() => setIsOpen(false)}
+												>
+													Historia
+												</a>
+											</li>
+											<li>
+												<a
+													href="/club/eventos"
+													className="block px-4 py-2 text-white hover:bg-gray-100 hover:text-purple-800 hover:rounded-b-md"
+													onClick={() => setIsOpen(false)}
+												>
+													Liga
+												</a>
+											</li>
+										</ul>
+									</div>
+								)}
+							</div> */}
 							<Link
 								href="/club"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
 							>
-								El Club
+								Club
 							</Link>
 							<Link
 								href="/noticias"

@@ -119,6 +119,7 @@ export default function Contacto({ posts }: { posts: any }) {
 						className="z-10 rounded-lg shadow-lg"
 						src={EquipoHome}
 						alt="Logo"
+						loading="lazy"
 					/>
 				</div>
 				<form
