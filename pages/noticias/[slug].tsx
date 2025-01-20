@@ -12,7 +12,7 @@ export default function post({ post }: { post: any }) {
 			<Head>
 				<title>{post?.title}</title>
 				<meta property="og:title" content={post?.title} />
-				<meta property="og:description" content={post.excerpt} />
+				<meta property="og:description" content={post?.excerpt} />
 				<meta
 					property="og:image"
 					content={post?.featuredImage?.node?.sourceUrl}

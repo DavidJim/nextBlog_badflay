@@ -36,6 +36,7 @@ export async function getPostBySlug(slug: string) {
       imagenNoticias {
           posicionImagen
         }
+      excerpt
       featuredImage {
         node {
           sourceUrl
