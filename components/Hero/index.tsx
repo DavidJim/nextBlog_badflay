@@ -16,6 +16,7 @@ export const Hero = () => {
 							alt="Logo"
 							width={500}
 							height={500}
+							priority
 						/>
 					</div>
 					<div className="flex justify-center text-center md:ml-16 md:justify-start md:text-start">
@@ -49,6 +50,7 @@ export const Hero = () => {
 						className="flex sm:relative sm:pt-0 md:pt-12 md:absolute z-10 object-contain scale-[1.3] lg:mt-12 lg:pt-0 md:scale-[1.5]"
 						src={EquipoHome}
 						alt="mockup"
+						priority
 					/>
 					<div className="relative md:absolute md:-left-7 bottom-0 md:-bottom-0 md:justify-self items-center md:h-[3rem] -z-10 lg:hidden">
 						<h1 className="font-robotReavers bottom-0 text-6xl md:text-[5rem] tracking-tighter text-white opacity-60">
@@ -101,6 +103,7 @@ export const Hero = () => {
 						className="hidden md:flex z-10 object-contain md:h-4/5 md:w-4/5 lg:h-4/5 lg:w-4/5 drop-shadow-2xl"
 						src={MobileHome}
 						alt="mockup"
+						priority
 					/>
 					<div className="absolute bottom-8 left-4 flex h-1/5 w-1/4 bg-purple-800 md:rotate-45 lg:h-1/5 lg:w-1/4"></div>
 				</div>
@@ -114,6 +117,7 @@ export const Hero = () => {
 							className="md:hidden z-10 object-contain h-96 mb-8"
 							src={MobileHome}
 							alt="mockup"
+							priority
 						/>
 					</div>
 					<div className="flex justify-center md:justify-start"></div>

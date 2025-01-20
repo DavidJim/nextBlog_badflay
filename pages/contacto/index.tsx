@@ -120,6 +120,7 @@ export default function Contacto({ posts }: { posts: any }) {
 						src={EquipoHome}
 						alt="Logo"
 						loading="lazy"
+						priority
 					/>
 				</div>
 				<form

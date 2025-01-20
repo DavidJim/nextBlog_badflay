@@ -142,6 +142,7 @@ export const Results = () => {
 											height={120}
 											width={120}
 											className="transition-all duration-200 ease-linear hover:-translate-y-[3px] hover:cursor-pointer"
+											priority
 										></Image>
 									</div>
 
@@ -179,6 +180,7 @@ export const Results = () => {
 											height={120}
 											width={120}
 											className="transition-all duration-200 ease-linear hover:-translate-y-[3px] hover:cursor-pointer"
+											priority
 										></Image>
 									</div>
 								</div>
@@ -193,6 +195,7 @@ export const Results = () => {
 						height={100}
 						width={100}
 						className="transition-all duration-200 ease-linear hover:-translate-y-[3px] hover:cursor-pointer"
+						priority
 					></Image>
 				</div>
 			</div>

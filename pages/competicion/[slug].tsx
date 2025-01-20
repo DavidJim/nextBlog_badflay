@@ -282,7 +282,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const eventos = await getEventos(100, "", fechaObjeto, fechaFiltro);
 	return {
 		paths: eventos.map((evento: any) => `/competicion/${evento.slug}`),
-		fallback: false,
+		fallback: "blocking",
 	};
 };
 

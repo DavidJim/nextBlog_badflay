@@ -126,7 +126,7 @@ export default function Club({ posts }: { posts: any }) {
 						className="rounded-lg"
 						src={activeTab === 1 ? BadflayClub : Badflay}
 						alt="club"
-						loading="lazy"
+						priority
 					/>
 				</div>
 			</div>
