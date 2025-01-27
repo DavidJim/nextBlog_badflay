@@ -16,7 +16,7 @@ import { Pagination } from "swiper/modules";
 
 export const Results = () => {
 	const [menuVisible, setMenuVisible] = useState(false);
-	const [jornada, setJornada] = useState("1");
+	const [jornada, setJornada] = useState("2");
 
 	const toggleMenu = () => {
 		setMenuVisible(!menuVisible);

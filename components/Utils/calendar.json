@@ -7,7 +7,8 @@
 			"hora": "11:00",
 			"nombreVisitante": "CD Arroyo Tejada",
 			"imagenLocal": "BADFLAY.png",
-			"imagenVisitante": "ARROYOTEJADA.png"
+			"imagenVisitante": "ARROYOTEJADA.png",
+			"resultado": "2-5"
 		},
 		{
 			"nombreLocal": "CB Drop Valencia",
@@ -16,7 +17,8 @@
 			"hora": "16:15",
 			"nombreVisitante": "CD Badflay",
 			"imagenLocal": "DROPVALENCIA.png",
-			"imagenVisitante": "BADFLAY.png"
+			"imagenVisitante": "BADFLAY.png",
+			"resultado": "5-2"
 		},
 		{
 			"nombreLocal": "CB Tenzul el Rosario",
@@ -25,7 +27,8 @@
 			"hora": "09:00",
 			"nombreVisitante": "CD Badflay",
 			"imagenLocal": "TENZUL.png",
-			"imagenVisitante": "BADFLAY.png"
+			"imagenVisitante": "BADFLAY.png",
+			"resultado": "5-2"
 		}
 	],
 	"2": [
