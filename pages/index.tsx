@@ -7,7 +7,6 @@ import { Partners } from "@/components/Partners";
 import { GetStaticProps } from "next";
 import { getEventos, getNews, getNewsV2 } from "@/lib/serviceStatic";
 import dayjs from "dayjs";
-import { useState } from "react";
 
 export default function HomePage({
 	posts,
@@ -19,14 +18,26 @@ export default function HomePage({
 	oldEvents: any;
 }) {
 	return (
-		<>
-			<Hero />
-			<Results />
-			<Cta eventos={eventos} oldEvents={oldEvents} />
-			<News posts={posts} />
-			<Partners />
-			<About />
-		</>
+		<div className="scroll-smooth">
+			<section id="inicio">
+				<Hero />
+			</section>
+			<section id="liga">
+				<Results />
+			</section>
+			<section id="eventos">
+				<Cta eventos={eventos} oldEvents={oldEvents} />
+			</section>
+			<section id="noticias">
+				<News posts={posts} />
+			</section>
+			<section id="colaboradores">
+				<Partners />
+			</section>
+			<section id="sobrenosotros">
+				<About />
+			</section>
+		</div>
 	);
 }
 

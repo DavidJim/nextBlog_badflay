@@ -83,12 +83,14 @@ export const Nav = () => {
 							<Link
 								href="/club"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
+								prefetch={true}
 							>
 								Club
 							</Link>
 							<Link
 								href="/noticias"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
+								prefetch={true}
 							>
 								Noticias
 							</Link>
@@ -104,12 +106,14 @@ export const Nav = () => {
 							<Link
 								href="/competicion"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
+								prefetch={true}
 							>
 								Competición
 							</Link>
 							<Link
 								href="/contacto"
 								className="px-4 transition-all duration-200 ease-linear hover:-translate-y-[2px]"
+								prefetch={true}
 							>
 								Contacto
 							</Link>

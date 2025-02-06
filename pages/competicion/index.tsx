@@ -67,13 +67,13 @@ export default function Competicion({ eventos }: { eventos: any }) {
 			setIsLoading(false);
 		} else {
 			let fechaObjeto = {
-				year: dayjs().year(),
-				month: 1,
-				day: 1,
+				year: dayjs().year() - 1,
+				month: dayjs().month(),
+				day: dayjs().day(),
 			};
 			const fechaFiltro = dayjs().subtract(4, "day").format("YYYY-MM-DD");
 			const eventosPasados = await getEventos(
-				3,
+				10,
 				"",
 				fechaObjeto,
 				fechaFiltro,
@@ -278,7 +278,6 @@ export default function Competicion({ eventos }: { eventos: any }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	console.log("Vamo a consultar");
 	// Crear un objeto con el año actual y los valores deseados para el mes y el día
 	const fechaObjeto = {
 		year: dayjs().year(),
