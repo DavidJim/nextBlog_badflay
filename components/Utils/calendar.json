@@ -39,7 +39,8 @@
 			"hora": "11:00",
 			"nombreVisitante": "CD Badflay",
 			"imagenLocal": "RINCONADA.png",
-			"imagenVisitante": "BADFLAY.png"
+			"imagenVisitante": "BADFLAY.png",
+			"resultado": "3-4"
 		},
 		{
 			"nombreLocal": "Bádminton Jorge Guillén",
@@ -48,7 +49,8 @@
 			"hora": "16:15",
 			"nombreVisitante": "CD Badflay",
 			"imagenLocal": "JORGEGUILLEN.png",
-			"imagenVisitante": "BADFLAY.png"
+			"imagenVisitante": "BADFLAY.png",
+			"resultado": "4-3"
 		},
 		{
 			"nombreLocal": "Bádminton Zamora",
@@ -57,7 +59,8 @@
 			"hora": "09:30",
 			"nombreVisitante": "CD Badflay",
 			"imagenLocal": "ZAMORA.png",
-			"imagenVisitante": "BADFLAY.png"
+			"imagenVisitante": "BADFLAY.png",
+			"resultado": "1-6"
 		}
 	],
 	"3": [

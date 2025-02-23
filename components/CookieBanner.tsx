@@ -11,7 +11,7 @@ export default function CookieBanner() {
 		const storedCookieConsent = getLocalStorage("cookie_consent", null);
 
 		setCookieConsent(storedCookieConsent);
-	}, [setCookieConsent]);
+	}, []);
 
 	useEffect(() => {
 		const newValue = cookieConsent ? "granted" : "denied";

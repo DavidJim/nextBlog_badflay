@@ -49,6 +49,8 @@ export const Hero = () => {
 					<Image
 						className="flex sm:relative sm:pt-0 md:pt-12 md:absolute z-10 object-contain scale-[1.3] lg:mt-12 lg:pt-0 md:scale-[1.5]"
 						src={EquipoHome}
+						width={1500}
+						height={1000}
 						alt="mockup"
 						priority
 					/>

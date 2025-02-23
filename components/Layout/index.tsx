@@ -4,8 +4,11 @@ import { Footer } from "../Footer";
 import Image from "next/image";
 import escudo from "../../public/images/escudo_blanco.png";
 import logo from "../../public/images/logo_blanco.png";
+import logoLoading from "../../public/images/Logo.png";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import CookieBanner from "@/components/CookieBanner";
+import { useEffect, useState } from "react";
+import { Loading } from "@/components/Loading";
 
 export const AppLayout = ({
 	children,
@@ -14,6 +17,26 @@ export const AppLayout = ({
 	children: ReactNode;
 	isOpen: boolean;
 }) => {
+	const [isClient, setIsClient] = useState(false);
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
+
+	if (!isClient) {
+		return (
+			<section className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat">
+				<Loading></Loading>
+				<Image
+					src={logoLoading}
+					className="object-cover"
+					alt="logo"
+					height={200}
+					width={200}
+				/>
+			</section>
+		);
+	}
 	return isOpen ? (
 		<main>
 			<Nav />

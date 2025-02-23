@@ -6,6 +6,8 @@ import { Results } from "@/components/Results";
 import { Partners } from "@/components/Partners";
 import { GetStaticProps } from "next";
 import { getEventos, getNews, getNewsV2 } from "@/lib/serviceStatic";
+import Head from "next/head";
+
 import dayjs from "dayjs";
 
 export default function HomePage({
@@ -18,26 +20,47 @@ export default function HomePage({
 	oldEvents: any;
 }) {
 	return (
-		<div className="scroll-smooth">
-			<section id="inicio">
-				<Hero />
-			</section>
-			<section id="liga">
-				<Results />
-			</section>
-			<section id="eventos">
-				<Cta eventos={eventos} oldEvents={oldEvents} />
-			</section>
-			<section id="noticias">
-				<News posts={posts} />
-			</section>
-			<section id="colaboradores">
-				<Partners />
-			</section>
-			<section id="sobrenosotros">
-				<About />
-			</section>
-		</div>
+		<>
+			<Head>
+				<title>Badflay - Club Bádminton Jaén</title>
+				<meta
+					name="description"
+					content="Bienvenido a la web del Club Bádminton Badflay de Jaén"
+				/>
+				<meta
+					name="keywords"
+					content="badminton, jaen, liga, deportes, andalucia, badflay"
+				/>
+				<meta property="og:title" content="Badflay - Club Bádminton Jaén" />
+				<meta
+					property="og:description"
+					content="Bienvenido a la web del Club Bádminton Badflay de Jaén"
+				/>
+				<meta property="og:image" content="../public/images/Logo.png" />
+				<meta property="og:url" content={`https://badflay.com`} />
+				<meta property="og:type" content="website" />
+			</Head>
+			<div className="scroll-smooth">
+				<section id="inicio">
+					<Hero />
+				</section>
+				<section id="liga">
+					<Results />
+				</section>
+				<section id="eventos">
+					<Cta eventos={eventos} oldEvents={oldEvents} />
+				</section>
+				<section id="noticias">
+					<News posts={posts} />
+				</section>
+				<section id="colaboradores">
+					<Partners />
+				</section>
+				<section id="sobrenosotros">
+					<About />
+				</section>
+			</div>
+		</>
 	);
 }
 
