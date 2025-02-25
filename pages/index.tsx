@@ -21,7 +21,7 @@ export default function HomePage({
 }) {
 	return (
 		<>
-			<Head>
+			{/* 			<Head>
 				<title>Badflay - Club Bádminton Jaén</title>
 				<meta
 					name="description"
@@ -42,7 +42,7 @@ export default function HomePage({
 				/>
 				<meta property="og:url" content={`https://badflay.com`} />
 				<meta property="og:type" content="website" />
-			</Head>
+			</Head> */}
 			<div className="scroll-smooth">
 				<section id="inicio">
 					<Hero />
