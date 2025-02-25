@@ -115,7 +115,7 @@ export default function Competicion() {
 				/>
 				<meta
 					property="og:image"
-					content="https://badflay.com/public/images/home/home_equipo-min.png"
+					content="https://badflay.com/images/home/home_equipo-min.png"
 				/>
 				<meta property="og:url" content="https://badflay.com/competicion" />
 				<meta property="og:type" content="website" />
