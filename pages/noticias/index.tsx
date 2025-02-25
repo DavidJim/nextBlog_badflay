@@ -70,7 +70,7 @@ export default function News() {
 				/>
 				<meta
 					property="og:image"
-					content="../../public/images/home/home_equipo-min.png"
+					content="https://badflay.com/images/home/home_equipo-min.png"
 				/>
 				<meta property="og:url" content="https://badflay.com/noticias" />
 				<meta property="og:type" content="article" />

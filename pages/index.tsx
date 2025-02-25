@@ -36,7 +36,10 @@ export default function HomePage({
 					property="og:description"
 					content="Bienvenido a la web del Club Bádminton Badflay de Jaén"
 				/>
-				<meta property="og:image" content="../public/images/Logo.png" />
+				<meta
+					property="og:image"
+					content="https://badflay.com/images/Logo.png"
+				/>
 				<meta property="og:url" content={`https://badflay.com`} />
 				<meta property="og:type" content="website" />
 			</Head>

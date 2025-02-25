@@ -117,7 +117,7 @@ export default function Contacto({ posts }: { posts: any }) {
 				/>
 				<meta
 					property="og:image"
-					content="../../public/images/club/club_equipo.jpeg"
+					content="https://badflay.com/images/club/club_equipo.jpeg"
 				/>
 				<meta property="og:url" content={`https://badflay.com/contacto`} />
 				<meta property="og:type" content="article" />

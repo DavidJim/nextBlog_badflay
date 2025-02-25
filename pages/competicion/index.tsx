@@ -115,10 +115,10 @@ export default function Competicion() {
 				/>
 				<meta
 					property="og:image"
-					content="../../public/images/home/home_equipo-min.png"
+					content="https://badflay.com/public/images/home/home_equipo-min.png"
 				/>
 				<meta property="og:url" content="https://badflay.com/competicion" />
-				<meta property="og:type" content="event" />
+				<meta property="og:type" content="website" />
 				<meta name="twitter:card" content="summary_large_image" />
 			</Head>
 			<section className="container mx-auto py-12 md:py-6 md:pt-0 items-center text-center border-b">
