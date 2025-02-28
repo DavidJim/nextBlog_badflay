@@ -17,7 +17,7 @@ export const AppLayout = ({
 	children: ReactNode;
 	isOpen: boolean;
 }) => {
-	const [isClient, setIsClient] = useState(false);
+	/* const [isClient, setIsClient] = useState(false);
 
 	useEffect(() => {
 		setIsClient(true);
@@ -36,7 +36,7 @@ export const AppLayout = ({
 				/>
 			</section>
 		);
-	}
+	} */
 	return isOpen ? (
 		<main>
 			<Nav />

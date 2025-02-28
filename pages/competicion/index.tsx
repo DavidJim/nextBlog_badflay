@@ -7,6 +7,8 @@ import { IoOpenOutline } from "react-icons/io5";
 import { Loading } from "@/components/Loading";
 import { getEventos } from "@/lib/service";
 import { useEffect, useState } from "react";
+import { GetStaticProps } from "next";
+
 import dayjs from "dayjs";
 
 const CountdownTimer = dynamic(() => import("../../components/Utils/Timer"), {
@@ -45,11 +47,15 @@ const fetcher = async () => {
 	return await getEventos(6, "", fechaObjeto, fechaFiltro); // Llamada directa a la API
 };
 
-export default function Competicion() {
+export default function Competicion({ initialData }: { initialData: any }) {
 	const [oldEvents, setOldEvents] = useState<boolean>(false);
 	const [events, setEvents] = useState<any>([]);
 	const [loading, setIsLoading] = useState<boolean>(false);
-	const { data: eventos, error, isLoading } = useSWR("eventos", fetcher);
+	const {
+		data: eventos,
+		error,
+		isLoading,
+	} = useSWR("eventos", fetcher, { fallbackData: initialData });
 
 	useEffect(() => {
 		if (eventos) {
@@ -316,3 +322,19 @@ export default function Competicion() {
 		</>
 	);
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+	const fechaObjeto = {
+		year: dayjs().year(),
+		month: 1,
+		day: 1,
+	};
+	const fechaFiltro = dayjs().subtract(4, "day").format("YYYY-MM-DD");
+
+	const eventos = await getEventos(6, "", fechaObjeto, fechaFiltro);
+
+	return {
+		props: { initialData: eventos },
+		revalidate: 30, // Se actualiza cada 60 segundos sin bloquear al usuario
+	};
+};
